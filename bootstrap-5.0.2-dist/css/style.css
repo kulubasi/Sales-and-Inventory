@@ -1,0 +1,42 @@
+:root{
+	--offcanvas-width: 270px;
+	--topNavbarHeight:  56px; /*its this height by default*/
+}
+
+.sidebar-nav{
+	width: var(--offcanvas-width);
+}
+.sidebar-link{
+	display: flex;
+	align-items: center;
+
+}
+.sidebar-link .right-icon{
+	display: inline-flex;
+	transition: all ease 0.25s;
+}
+
+.sidebar-link[aria-expanded="true"] .right-icon{
+	transform: rotate(180deg);
+}
+
+main{
+	margin-left: var(--offcanvas-width);
+}
+/*for off canvas to be visible on large screens use   also makes off canvas visible by default on large screens only*/
+@media(min-width: 992px){
+	body{
+		overflow: auto !important;
+	}
+	.offcanvas-backdrop::before{ display: none; }
+	.sidebar-nav{
+		transform: none;
+		visibility: visible !important;
+		top: var(--topNavbarHeight);
+		height: calc(100%-var(--topNavbarHeight));  /*sets offcanvas just below the navbar*/
+	}
+}
+
+.cont{
+	height: calc(100%-var(--topNavbarHeight));
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="ict.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap-5.0.2-dist/css/style.css">
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+  <title></title>
+  <style type="text/css">
+    a{ text-decoration: none; color: white; }
+  </style>
+</head>
+<body class="bg-dark" style="font-family:cursive;font-size: large;";>
+  <!-- nav bar start -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <!-- offcanvas trigger -->
+      <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <span class="navbar-toggler-icon " data-bs-target="#offcanvasExample"></span>
+  </button>
+      <!-- end of offcanvas trigger -->
+      <a class="navbar-brand fw-bold text-uppercase me-auto" href="#"> Sales and Inventory </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <form class="d-flex ms-auto" role="search">
+          <div class="input-group my-3 my-lg-0">
+            
+      </div>
+
+        </form>
+        <ul class="navbar-nav mb-2 mb-lg-0 text-white">
+          <li style="margin-right: 20px;">About</li>
+          <li style="margin-right: 20px;">Contact Us</li>
+          <li style="margin-right: 20px;"><a href="login.php"><i class="fa fa-lock"></i> Login</a> </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- end of navbar -->
+
+
+  <div class="container text-white" style="margin-top:80px" >
+    
+  <div class="row text-white" style="margin: auto; width:50%;">
+    <h4 class="text-uppercase">Confirm User Creation</h4><br>
+      <!-- <p class="fw-light">Join the mllions of others in easily managing goods in stock, as well as sales and expenditures.To access the system please login with your assigned user role or type and user details</p><br>
+      <p>Do you already have an account,but you forgot your password? </p> 
+      <p style="color: blue;"> You can reset it here</p>
+      <p>Need a Confirmation email?</p>
+      <p style="color:blue;"> You can resend it here</p>
+      <a href="login.php"><button class="btn btn-success">Login</button></a> -->
+
+      <div id="my_form">
+      <p>Thanks for filling up the form! Your details have been captured!</p>
+      <button class="btn btn-danger" id="nextStep">Click here to Continue</button>
+      </div>
+
+      <div id="thank_you" style="display: none;">
+        <p>You have successfuly created a new user.</p>
+        <a class="btn btn-success" href="managerhome.php" type="submit">Proceed to Home</a>
+      </div>
+    
+    
+  </div>
+  </div>
+  
+
+</body>
+</html>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    var nextStep = document.querySelector('#nextStep');
+
+    nextStep.addEventListener('click', function (e) {
+      e.preventDefault();
+      // Hide first view
+      document.getElementById('my_form').style.display = 'none';
+
+      // Show thank you message element
+      document.getElementById('thank_you').style.display = 'block';
+    });
+  </script>
