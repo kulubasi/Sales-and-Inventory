@@ -211,24 +211,36 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td>Larry</td>
-				      <td>the Bird</td>
-				      <td>@twitter</td>
-				    </tr>
+				    <?php
+		            include("config.php");
+		            $mydb ="SELECT * FROM  stock";
+		            $run=mysqli_query($dbconn,$mydb);
+		            if(mysqli_num_rows($run) > 0){
+		                echo "<div style='font-size:14px;'>"."<b>"."You current stock is as  follows"."</b>"."<div>";
+		            	$a =0;               
+		                while($row=mysqli_fetch_array($run)){
+		                    $id =$row[0];
+		                    $name=$row[1];
+		                    $descri  =$row[2];
+		                    $qtty =$row[3];
+		                    $a+=1;
+		                  echo '<tr>';
+		                    echo'<td>' . $a.'</td>';
+		                    echo'<td>' .$name.'</td>';
+		                    echo'<td>' .$descri.'</td>';
+		                    echo'<td>' .$qtty.'</td>';
+		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';
+		                  echo '</tr>';
+		     
+		                }
+		         
+		            }else{
+		            echo "<h3 >You have no current stock</h3>";
+		            }
+		                  
+		            ?>
+
+
 				  </tbody>
 				</table>
 
@@ -256,25 +268,52 @@
 		</div>
 
 		<div>
-			<form id="addnewproduct" class="addnewproduct">
+			<form id="addnewproduct" class="addnewproduct" method="post">
 				<label for="exampleInputEmail1" class="form-label text-uppercase">Add New item</label>
 				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close1">X</div>
 			  <div class="mb-3">
 			    <label for="exampleInputEmail1" class="form-label">Item name</label>
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="item">
 			    <div id="emailHelp" class="form-text">Enter the item name.</div>
 			  </div>
 			  <div class="mb-3">
 			    <label for="exampleInputPassword1" class="form-label">Description</label>
-			    <input type="text" class="form-control" id="exampleInputPassword1">
+			    <input type="text" class="form-control" id="exampleInputPassword1" name="desc">
 			  </div>
 			  <div class="mb-3">
 			    <label for="exampleInputPassword1" class="form-label">Quantity</label>
-			    <input type="number" class="form-control" id="exampleInputPassword1">
+			    <input type="number" class="form-control" id="example" name="qtty">
 			  </div>
 			  
-			  <button type="submit" class="btn btn-primary">Add to stock</button>
+			  <button type="submit" name="newpdt" class="btn btn-primary">Add to stock</button>
 			</form>
+
+			<?php
+				include("config.php");
+				if(isset($_POST['newpdt'])){
+					$item=$_POST['item'];
+					$desc=$_POST['desc'];
+					$qtty=$_POST['qtty'];
+				
+
+					$sql = "INSERT INTO stock (`name`, `descri`,`qtty`) VALUES ('$item', '$desc','$qtty')";
+
+					if (mysqli_query($dbconn, $sql)) {
+					  echo "Item has been added successfully";
+					  echo "<script>window.location.href='stockmanager.php';</script>";
+					  //header('Location:managerhome.php');
+					  //exit();
+					} 
+					else {
+					  echo "Error: " . $sql . "<br>" . mysqli_error($dbconn);
+					}
+
+					mysqli_close($dbconn);
+
+				}
+				?>
+
+			
 		</div>
 
 
@@ -302,12 +341,16 @@
 	</main>
 	<script type="text/javascript">
 		let container = document.getElementById('container');
-		let addstock = document.getElementById('addstock');
-		let addnewproduct = document.getElementById('addnewproduct');
-		let close = document.getElementById('close');
-		let close1 = document.getElementById('close1');
+		
+		
 		let add1 = document.getElementById('add');
+		let close = document.getElementById('close');
+		let addstock = document.getElementById('addstock');
+		
+		
 		let addnew = document.getElementById('addnew');
+		let close1 = document.getElementById('close1');
+		let addnewproduct = document.getElementById('addnewproduct');
 
 		add1.addEventListener('click',(e)=>{
 			e.preventDefault();
@@ -315,13 +358,12 @@
 			document.body.classList.add('overflow')
 		})
 
-		
-
 		close.addEventListener('click',(e)=>{
 			e.preventDefault();
 			addstock.classList.remove('active')
 			document.body.classList.remove('overflow')
 		})
+
 
 		addnew.addEventListener('click',(e)=>{
 			e.preventDefault();
@@ -339,5 +381,8 @@
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="DataTables/js/datatables.min.js"></script>
 	<script type="text/javascript" src="DataTables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+
+	
 </body>
 </html>
