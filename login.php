@@ -15,7 +15,7 @@
 	</style>
 </head>
 
-<body class="bg-dark bg-gradient" style="font-family:cursive;font-size: large;";>
+<body class="bg-dark bg-gradient" style="font-family:cursive;font-size: large;">
 	
 	<!-- nav bar start -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">

@@ -13,7 +13,7 @@
 		a{ text-decoration: none; color: white; }
 	</style>
 </head>
-<body>
+<body class="" style="font-family:cursive;font-size: large;">
 	<!-- nav bar start -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	  <div class="container-fluid">
@@ -104,7 +104,7 @@
 					  				<span class="me-2">
 					  					<i class="bi bi-layout-split"></i>
 					  				</span>
-					  				<span>Add stock</span>
+					  				<span id="add">Add stock</span>
 					  			</a>
 					  		</li>
 					  		<li>
@@ -112,7 +112,7 @@
 					  				<span class="me-2">
 					  					<i class="bi bi-layout-split"></i>
 					  				</span>
-					  				<span>Add new Product</span>
+					  				<span id="addnew">Add new Product</span>
 					  			</a>
 					  		</li>
 
@@ -173,7 +173,7 @@
 	<!-- end of off canvas -->
 
 	<main class="mt-5 pt-3">
-		<div class="container-fluid">
+		<div class="container-fluid" id="container">
 			<div class="row">
 				<div class="col-md-12 fw-bold fs-3 text-center">My stock account</div>
 			</div><br>
@@ -254,8 +254,85 @@
 				</div>
 			</div> -->
 		</div>
-	</main>
 
+		<div>
+			<form id="addnewstock" class="addnewstock">
+				<label for="exampleInputEmail1" class="form-label text-uppercase">Add New item</label>
+				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close1">X</div>
+			  <div class="mb-3">
+			    <label for="exampleInputEmail1" class="form-label">Item name</label>
+			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+			    <div id="emailHelp" class="form-text">Enter the item name.</div>
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputPassword1" class="form-label">Description</label>
+			    <input type="text" class="form-control" id="exampleInputPassword1">
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputPassword1" class="form-label">Quantity</label>
+			    <input type="number" class="form-control" id="exampleInputPassword1">
+			  </div>
+			  
+			  <button type="submit" class="btn btn-primary">Add to stock</button>
+			</form>
+		</div>
+
+
+		<div>
+			<form id="addstock" class="addstock">
+				<label for="exampleInputEmail1" class="form-label text-uppercase">Restock item</label>
+				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close">X</div>
+			  <div class="mb-3">
+			    <label for="exampleInputEmail1" class="form-label">Item name</label>
+			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+			    <div id="emailHelp" class="form-text">Enter the item name.</div>
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputPassword1" class="form-label">Description</label>
+			    <input type="text" class="form-control" id="exampleInputPassword1">
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputPassword1" class="form-label">Quantity</label>
+			    <input type="number" class="form-control" id="exampleInputPassword1">
+			  </div>
+			  
+			  <button type="submit" class="btn btn-primary">Add to stock</button>
+			</form>
+		</div>
+	</main>
+	<script type="text/javascript">
+		let container = document.getElementById('container');
+		let addstock = document.getElementById('addstock');
+		let addnewproduct = document.getElementById('addnewproduct');
+		let close = document.getElementById('close');
+		let close1 = document.getElementById('close1');
+		let add1 = document.getElementById('add');
+		let addnew = document.getElementById('addnew');
+
+		add1.addEventListener('click',(e)=>{
+			e.preventDefault();
+			addstock.classList.add('active')
+			document.body.classList.add('overflow')
+		})
+
+		addnew.addEventListener('click',(e)=>{
+			e.preventDefault();
+			addnewstock.classList.add('active')
+			document.body.classList.add('overflow')
+		})
+
+		close.addEventListener('click',(e)=>{
+			e.preventDefault();
+			addstock.classList.remove('active')
+			document.body.classList.remove('overflow')
+		})
+
+		close1.addEventListener('click',(e)=>{
+			e.preventDefault();
+			addstock.classList.remove('active')
+			document.body.classList.remove('overflow')
+		})
+	</script>
 	<script type="text/javascript" src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="DataTables/js/datatables.min.js"></script>
