@@ -8,7 +8,7 @@
 	<title></title>
 	<style type="text/css">
 		a{ text-decoration: none; color: white; }
-		
+
 	</style>
 </head>
 <body class="bg-dark bg-gradient" style="font-family:cursive;font-size: large;";>
