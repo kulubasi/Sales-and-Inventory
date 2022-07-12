@@ -256,7 +256,7 @@
 		</div>
 
 		<div>
-			<form id="addnewstock" class="addnewstock">
+			<form id="addnewproduct" class="addnewproduct">
 				<label for="exampleInputEmail1" class="form-label text-uppercase">Add New item</label>
 				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close1">X</div>
 			  <div class="mb-3">
@@ -315,11 +315,7 @@
 			document.body.classList.add('overflow')
 		})
 
-		addnew.addEventListener('click',(e)=>{
-			e.preventDefault();
-			addnewstock.classList.add('active')
-			document.body.classList.add('overflow')
-		})
+		
 
 		close.addEventListener('click',(e)=>{
 			e.preventDefault();
@@ -327,9 +323,15 @@
 			document.body.classList.remove('overflow')
 		})
 
+		addnew.addEventListener('click',(e)=>{
+			e.preventDefault();
+			addnewproduct.classList.add('active')
+			document.body.classList.add('overflow')
+		})
+
 		close1.addEventListener('click',(e)=>{
 			e.preventDefault();
-			addstock.classList.remove('active')
+			addnewproduct.classList.remove('active')
 			document.body.classList.remove('overflow')
 		})
 	</script>
