@@ -110,7 +110,7 @@
                      <select class="form-select" aria-label="Default select example" name="usertype">
                       <!-- <option selected>User type</option> -->
                       <option>Desk officer</option>
-                      <option>Store keeper</option>
+                      <option>Stock Manager</option>
                       <option>Manager</option>
                       <option>Admin</option>
                       <!-- <option value="Jobseeker">Admin</option> -->

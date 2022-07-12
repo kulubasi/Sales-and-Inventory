@@ -148,7 +148,7 @@
                     <div class="input-group mb-2">
                      <select class="form-select" aria-label="Default select example" name="usertype">
                       <option value="Desk officer">Desk officer</option>
-                      <option value="Stock Manager">Stock manager</option>
+                      <option value="Stock Manager">Stock Manager</option>
                       <option value="Manager">Manager</option>
                       <option value="Admin">Admin</option>
                     </select>
