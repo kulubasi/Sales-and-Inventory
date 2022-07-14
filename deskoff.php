@@ -1,3 +1,11 @@
+
+<?php
+session_start();
+if(isset($_SESSION['$username_j'])){
+}else{
+    header('location:login.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +51,7 @@
 	          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 	            <li><a class="dropdown-item" href="#">My Profile</a></li>
 	            <li><a class="dropdown-item" href="#">Update Profile</a></li>
+	            <li><a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out fa-2x" style="color: bue !important"> </i>Logout</a></li>
 	            <!-- <li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
 	          </ul>

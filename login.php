@@ -42,7 +42,6 @@
 	      	<li style="margin-right: 20px;">About</li>
 	      	<li style="margin-right: 20px;">Contact Us</li>
 	      	<!-- <li style="margin-right: 20px;"><a href="signup.php">Register</a></li> -->
-	      	
 	      </ul>
 	    </div>
 	  </div>
@@ -77,6 +76,11 @@
 				echo '<script type="text/javascript">alert("Wrong UserName or Password");window.location=\'login.php\';</script>';
     		}
     		else{
+    			$_SESSION['id']=$records['id'];
+				$_SESSION['ftname']=$records['fname'];
+				$_SESSION['ltname']=$records['lname'];
+				$_SESSION['mail']   =$records['email'];
+				$_SESSION['$username_j']=$username;
     			header("location:deskoff.php");
     		}
     	}
@@ -89,6 +93,11 @@
 				echo '<script type="text/javascript">alert("Wrong UserName or Password");window.location=\'login.php\';</script>';
     		}
     		else{
+    			$_SESSION['id']=$records['id'];
+				$_SESSION['ftname']=$records['fname'];
+				$_SESSION['ltname']=$records['lname'];
+				$_SESSION['mail']   =$records['email'];
+				$_SESSION['$username_j']=$username;
     			header("location:stockmanager.php");
     		}
     		
@@ -102,6 +111,11 @@
 				echo '<script type="text/javascript">alert("Wrong UserName or Password");window.location=\'login.php\';</script>';
     		}
     		else{
+    			$_SESSION['id']=$records['id'];
+				$_SESSION['ftname']=$records['fname'];
+				$_SESSION['ltname']=$records['lname'];
+				$_SESSION['mail']   =$records['email'];
+				$_SESSION['$username_j']=$username;
     			header("location:managerhome.php");
     		}
     		
@@ -115,7 +129,11 @@
 				echo "yes";
 				echo '<script type="text/javascript">alert("Wrong UserName or Password");window.location=\'login.php\';</script>';
     		}else{
-    			echo "no";
+    			$_SESSION['id']=$records['id'];
+				$_SESSION['ftname']=$records['fname'];
+				$_SESSION['ltname']=$records['lname'];
+				$_SESSION['mail']   =$records['email'];
+				$_SESSION['$username_j']=$username;
     			header("location:deskhome.php");
     		}
     	}

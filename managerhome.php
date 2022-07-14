@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['$username_j'])){
+}else{
+    header('location:login.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,11 +37,15 @@
 
 	      <form class="d-flex ms-auto" role="search">
 	      	<div class="input-group my-3 my-lg-0">
-	        	<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+	        	<input type="text" class="form-control" value="Username: <?php echo $_SESSION['$username_j']?>" aria-label="Recipient's username" aria-describedby="button-addon2">
 			  	<button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
 			</div>
 
 	      </form>
+	      <?php
+	      	$a=$_SESSION['$username_j'];
+            include("config.php");
+	       ?>
 	      <ul class="navbar-nav mb-2 mb-lg-0">
 	      	<li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,6 +56,7 @@
 	            <li><a class="dropdown-item" href="#">Another action</a></li>
 	            <li><hr class="dropdown-divider"></li>
 	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out fa-2x" style="color: bue !important"> </i>Logout</a></li>
 	          </ul>
 	        </li>
 	      </ul>
