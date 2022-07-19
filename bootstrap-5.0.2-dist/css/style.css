@@ -188,3 +188,24 @@ main{
         opacity: 0;
     }
 }
+
+/*============tables=======*/
+.tables{
+    display: none;
+    z-index: 1;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    right: 0;
+    bottom: 0;
+    width: 900px;
+}
+.tables.active{
+    display: block;
+}
+.cards{
+    display: block;
+}
+.cards.active{
+    display: none;
+}

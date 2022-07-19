@@ -87,7 +87,7 @@ if(isset($_SESSION['$username_j'])){
 	  				<span class="me-2">
 	  					<i class="bi bi-speedometer2"></i>
 	  				</span>
-	  				<span>Dashboard</span>
+	  				<span id="dashboard" class="">Dashboard</span>
 	  				</a>
 	  			</li>
 
@@ -152,7 +152,7 @@ if(isset($_SESSION['$username_j'])){
 				    <span class="me-2">
 	  					<i class="bi bi-layout-split"></i>
 	  				</span>
-	  				<span>Current Users</span>
+	  				<span id="user_offcanvas" onclick="clicked()">Current Users</span>
 	  				
 				  	</a>
 
@@ -229,47 +229,48 @@ if(isset($_SESSION['$username_j'])){
 				<div class="col-md-12 fw-bold fs-3">Dashboard</div>
 
 			</div><br>
-
-			<div class="row">
-				<div class="col" >
-					<div class="card text-white bg-success mb-3 h-100"  >
-						<div class="card-header text-center" >My Employees</div>
-						  <div class="card-body">
-						    <!-- <h5 class="card-title">View Users</h5> -->
-						    <p class="card-text text-center">View current users.</p>
-						  </div>
+			<div class="cards" id="cards">
+				<div class="row">
+					<div class="col" >
+						<div class="card text-white bg-success mb-3 h-100"  >
+							<div class="card-header text-center" >My Employees</div>
+							  <div class="card-body">
+							    <!-- <h5 class="card-title">View Users</h5> -->
+							    <p class="card-text text-center">View current users.</p>
+							  </div>
+						</div>
 					</div>
-				</div>
 
-				<div class="col">
-					<div class="card text-white bg-success mb-3 h-100" >
-						<div class="card-header text-center">Check stock</div>
-						  <div class="card-body">
-						    <!-- <h5 class="card-title">Primary card title</h5> -->
-						    <p class="card-text text-center">See how you standing in terms of stock.</p>
-						  </div>
+					<div class="col">
+						<div class="card text-white bg-success mb-3 h-100" >
+							<div class="card-header text-center">Check stock</div>
+							  <div class="card-body">
+							    <!-- <h5 class="card-title">Primary card title</h5> -->
+							    <p class="card-text text-center">See how you standing in terms of stock.</p>
+							  </div>
+						</div>
 					</div>
-				</div>
-			</div><br>
-			<div class="row">
+				</div><br>
+				<div class="row">
 
-				<div class="col">
-					<div class="card text-white bg-success mb-3 h-100" >
-						<div class="card-header text-center">Sales Report</div>
-						  <div class="card-body">
-						    <!-- <h5 class="card-title">Primary card title</h5> -->
-						    <p class="card-text text-center">Check your report about daily sales and expenditures.</p>
-						  </div>
+					<div class="col">
+						<div class="card text-white bg-success mb-3 h-100" >
+							<div class="card-header text-center">Sales Report</div>
+							  <div class="card-body">
+							    <!-- <h5 class="card-title">Primary card title</h5> -->
+							    <p class="card-text text-center">Check your report about daily sales and expenditures.</p>
+							  </div>
+						</div>
 					</div>
-				</div>
 
-				<div class="col">
-					<div class="card text-white bg-success h-100" >
-						<div class="card-header text-center">Departments</div>
-						  <div class="card-body">
-						    <!-- <h5 class="card-title">Primary card title</h5> -->
-						    <p class="card-text text-center">Check current departments and assign new roles </p>
-						  </div>
+					<div class="col">
+						<div class="card text-white bg-success h-100" >
+							<div class="card-header text-center">Departments</div>
+							  <div class="card-body">
+							    <!-- <h5 class="card-title">Primary card title</h5> -->
+							    <p class="card-text text-center">Check current departments and assign new roles </p>
+							  </div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -292,7 +293,7 @@ if(isset($_SESSION['$username_j'])){
 					</div>
 				</div>
 			</div> --><br>
-			<div class="row">
+			<div class="row tables" id="users">
 				<table class="table">
 					<tr>
 						<thead>
@@ -352,5 +353,23 @@ if(isset($_SESSION['$username_j'])){
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="DataTables/js/datatables.min.js"></script>
 	<script type="text/javascript" src="DataTables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
+	<script type="text/javascript">
+		let cards = document.getElementById('cards')
+		let users = document.getElementById('users')
+		let user_offcanvas = document.getElementById('user_offcanvas')
+		let dashboard = document.getElementById('dashboard')
+		function clicked(){
+			cards.classList.add('active')
+			users.classList.add('active')
+		}
+		// user_offcanvas.addEventListener('click',(e)=>{
+		// 	cards.classList.toggle('active')
+		// 	users.classList.toggle('active')
+		// })
+		dashboard.addEventListener('click',(e)=>{
+			cards.classList.remove('active')
+			users.classList.remove('active')
+		})
+	</script>
 </body>
 </html>
