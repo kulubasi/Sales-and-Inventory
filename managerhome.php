@@ -291,7 +291,60 @@ if(isset($_SESSION['$username_j'])){
 						<div class="card-body"></div>
 					</div>
 				</div>
-			</div> -->
+			</div> --><br>
+			<div class="row">
+				<table class="table">
+					<tr>
+						<thead>
+							<th>Id</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>User name</th>
+							<th>Email</th>
+							<th>Telephone Number</th>
+							<th>User Type</th>
+						</thead>
+					</tr>
+					<tbody>
+						<?php
+		            include("config.php");
+		            $mydb ="SELECT * FROM  users";
+		            $run=mysqli_query($dbconn,$mydb);
+		            if(mysqli_num_rows($run) > 0){
+		                echo "<div style='font-size:14px;'>"."<b>"."<h3>Your current users are as  follows</h3>"."</b>"."<div>";
+		            	$a =0;               
+		                while($result=mysqli_fetch_array($run)){
+		                    $id =$result[0];
+		                    $fname=$result[2];
+		                    $lname  =$result[3];
+		                    $uname =$result[4];
+		                    $email =$result[1];
+	                       $tno =$result[5];
+	                       $ut =$result[7];
+		                    $a+=1; 
+		                    echo '<tr>';
+		                    echo'<td>' . $a.'</td>';
+		                    echo'<td>' .$fname.'</td>';
+		                    echo'<td>' .$lname.'</td>';
+		                    echo'<td>' .$uname.'</td>';
+		                    echo'<td>' .$email.'</td>';
+		                    echo'<td>' .$tno.'</td>';
+		                    echo'<td>' .$ut.'</td>';
+		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';
+		                    echo '</tr>';
+		     
+		                }
+		         
+		            }
+		            else{
+		            echo "<h3 >You have no current users</h3>";
+		            }
+		                  
+		            ?>
+					
+				</tbody>
+				</table>
+			</div>
 		</div>
 	</main>
 
