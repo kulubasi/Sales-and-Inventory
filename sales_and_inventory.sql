@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2022 at 04:25 PM
+-- Generation Time: Jul 20, 2022 at 09:39 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,7 +45,8 @@ INSERT INTO `stock` (`id`, `name`, `descri`, `qtty`) VALUES
 (4, 'Epson Printer Ink', '5 bottles of blue green and yellow', 5),
 (5, 'Envelopes', 'Small', 50),
 (6, 'Files', 'Red files', 10),
-(7, 'Box Files', 'Black green and red files', 3);
+(7, 'Box Files', 'Black green and red files', 3),
+(8, 'Books', 'A3', 50);
 
 -- --------------------------------------------------------
 
@@ -72,7 +73,8 @@ INSERT INTO `users` (`id`, `email`, `fname`, `lname`, `username`, `tel`, `pswd`,
 (17, 'davie@gmail.com', 'david', 'kagimu', 'davie', '07654637211', 'davie22', 'Stock manager'),
 (19, 'manager@ictspecialistsug.com', 'manager', 'ict', 'manager', '0786564345', 'manager22', 'Manager'),
 (22, 'mark@gmail.com', 'mark', 'aine', 'mark', '0786432312', 'mark22', 'Stock Manager'),
-(23, 'ainembabazipraise48@gmail.com', 'praise', 'aine', 'aine', '0786452314', 'aine22', 'Desk officer');
+(23, 'ainembabazipraise48@gmail.com', 'praise', 'aine', 'aine', '0786452314', 'aine22', 'Desk officer'),
+(24, 'mawarichard45@gmail.com', 'Mawa', 'Richard', 'mawarich', '+256787034826', 'mawa22', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -98,13 +100,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
