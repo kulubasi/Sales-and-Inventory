@@ -11,6 +11,14 @@
 	</style>
 </head>
 <body class="bg-dark bg-gradient" style="font-family:cursive;font-size: large;";>
+	
+	<?php
+		session_start();
+		if(isset($_SESSION['$username_j'])){
+		}else{
+		    header('location:login.php');
+		}
+		?>
 	<!-- nav bar start -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	  <div class="container-fluid">
@@ -31,10 +39,12 @@
 			</div>
 
 	      </form>
+
 	      <ul class="navbar-nav mb-2 mb-lg-0 text-white">
 	      	<li style="margin-right: 20px;">About</li>
 	      	<li style="margin-right: 20px;">Contact Us</li>
-	      	<li style="margin-right: 20px;"><a href="login.php"><i class="fa fa-lock"></i> Login</a> </li>
+	      	<li style="margin-right: 20px;"><input type="button" class="form-control" value="Welcome: <?php echo $_SESSION['$username_j']?>" aria-label="Recipient's username" aria-describedby="button-addon2"> </li>
+	      	<li><a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out fa-1.5x text-white" style="color: red !important">Logout </i ></a></li>
 	      </ul>
 	    </div>
 	  </div>
@@ -46,7 +56,7 @@
 		<img src="img/ictlogo.png">
 	</div> -->
 	<div class="container text-white" style="margin-top:80px" >
-		<h4 class="text-uppercase">Login</h4><br>
+		<h4 class="text-uppercase">Create Members accounts</h4><br>
 	<div class="row text-white">
 		<div class="col">
 			<p class="fw-light">Join the mllions of others in easily managing goods in stock, as well as sales and expenditures.To access the system please login with your assigned user role or type and user details</p><br>
@@ -54,7 +64,7 @@
 			<p style="color: blue;"> You can reset it here</p>
 			<p>Need a Confirmation email?</p>
 			<p style="color:blue;"> You can resend it here</p>
-			<a href="login.php"><button class="btn btn-success">Login</button></a>
+			<a href="#"><button class="btn btn-success">Resend Confirmation code</button></a>
 		</div>
 
 		<div class="col">

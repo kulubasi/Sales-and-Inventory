@@ -216,7 +216,7 @@ if(isset($_SESSION['$username_j'])){
              
              <ol class="breadcrumb">
                 <li style=" margin-left: 930px;">
-                	<a href="#" style="text-decoration:none;"> Home</a>
+                	<a href="managerhome.php" style="text-decoration:none;"> Home</a>
                 </li>>
                <!--  <li >
                 	<a href="#" style="text-decoration:none;"> next</a>
@@ -226,7 +226,7 @@ if(isset($_SESSION['$username_j'])){
                 </li> -->
              </ol>
         </div>
-				<div class="col-md-12 fw-bold fs-3">Dashboard</div>
+				<div class="col-md-12 fw-bold fs-3">Your Dashboard</div>
 
 			</div><br>
 			<div class="cards" id="cards">
