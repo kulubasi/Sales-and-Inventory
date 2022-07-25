@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap-5.0.2-dist/css/style.css">
 	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 	<title></title>
 	<style type="text/css">
 		a{ text-decoration: none; color: white; }
@@ -41,6 +42,10 @@
 	      </form>
 
 	      <ul class="navbar-nav mb-2 mb-lg-0 text-white">
+      		<li style="padding-right: 20px;">
+            	<a href="managerhome.php" style="text-decoration:none;"> <i class="bi bi-house"></i></a>
+                </li>
+
 	      	<li style="margin-right: 20px;">About</li>
 	      	<li style="margin-right: 20px;">Contact Us</li>
 	      	<li style="margin-right: 20px;"><input type="button" class="form-control" value="Welcome: <?php echo $_SESSION['$username_j']?>" aria-label="Recipient's username" aria-describedby="button-addon2"> </li>
@@ -48,7 +53,7 @@
 	      </ul>
 	    </div>
 	  </div>
-	</nav>
+	</nav><br>
 	<!-- end of navbar -->
 
 
@@ -158,7 +163,7 @@
 
 		if (mysqli_query($dbconn, $sql)) {
 		  echo "New user has been created successfully";
-		  echo "<script>window.location.href='aftersign.html';</script>";
+		  echo "<script>window.location.href='sendmail.php';</script>";
 		  //header('Location:managerhome.php');
 		  //exit();
 		} 

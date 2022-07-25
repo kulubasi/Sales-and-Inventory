@@ -216,7 +216,7 @@ if(isset($_SESSION['$username_j'])){
              
              <ol class="breadcrumb">
                 <li style=" margin-left: 930px;">
-                	<a href="managerhome.php" style="text-decoration:none;"> Home</a>
+                	<a href="managerhome.php" style="text-decoration:none;"> <i class="bi bi-house"></i></a>
                 </li>>
                <!--  <li >
                 	<a href="#" style="text-decoration:none;"> next</a>
