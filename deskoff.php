@@ -182,7 +182,7 @@ if(isset($_SESSION['$username_j'])){
 	<!-- end of off canvas -->
 
 	<main class="mt-5 pt-3">
-		<div class="container-fluid">
+		<div class="container-fluid" id="container">
 			<div class="row">
 				<div class="col-md-12 fw-bold fs-3">My sales account</div>
 			</div><br>
@@ -203,36 +203,86 @@ if(isset($_SESSION['$username_j'])){
 						<div class="card-header text-center">Expenditures</div>
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">Primary card title</h5> -->
-						    <p class="card-text text-center">Record Expense.</p>
+						    <p class="card-text text-center adde" id="adde">Record Expense.</p>
 						  </div>
 					</div>
 				</div>
 			</div><br>
-			<div class="row">
+			<div>
+			<form id="addexpense" class="addexpense" method="post">
+				<label for="exampleInputEmail1" class="form-label text-uppercase">Record Expense</label>
+				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close">X</div>
+			  <div class="mb-3">
+			    <label for="exampleInputEmail1" class="form-label">Item</label>
+			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="item">
+			    <div id="emailHelp" class="form-text">Enter the item name.</div>
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputPassword1" class="form-label">Description</label>
+			    <input type="text" class="form-control" id="exampleInputPassword1" name="desc">
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputPassword1" class="form-label">Amount</label>
+			    <input type="number" class="form-control" id="example" name="amount">
+			  </div>
+			  
+			  <button type="submit" name="newexpense" class="btn btn-primary">Finish record</button>
+			</form>
 
+			<?php
+				include("config.php");
+				if(isset($_POST['newexpense'])){
+					$item=$_POST['item'];
+					$desc=$_POST['desc'];
+					$qtty=$_POST['amount'];
 				
-			</div>
-			<!-- <div class="row">
-				<div class="col-md-6">
-					<div class="card">
-						<div class="card-header">Charts</div>
-						<div class="card-body">
-							<canvas class="chart" width="400" height="200"></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-12">
-					<div class="card">
-						<div class="card-header">Data Tables</div>
-						<div class="card-body"></div>
-					</div>
-				</div>
-			</div> -->
+					$sql = "INSERT INTO expenses (`item`, `descri`,`amt`) VALUES ('$item', '$desc','$qtty')";
+
+					if (mysqli_query($dbconn, $sql)) {
+					  echo "Item has been added successfully";
+					  echo "<script>window.location.href='deskoff.php';</script>";
+					  //header('Location:managerhome.php');
+					  //exit();
+					} 
+					else {
+					  echo "Error: " . $sql . "<br>" . mysqli_error($dbconn);
+					}
+
+					mysqli_close($dbconn);
+
+				}
+				?>
+
+			
+		</div>
+			
 		</div>
 	</main>
+
+	<script type="text/javascript">
+		let container = document.getElementById('container');
+		
+
+		let add1 = document.getElementById('adde');
+		let close = document.getElementById('close');
+		let addstock = document.getElementById('addexpense');
+		
+
+		add1.addEventListener('click',(e)=>{
+			e.preventDefault();
+			addstock.classList.add('active')
+			document.body.classList.add('overflow')
+		})
+
+		close.addEventListener('click',(e)=>{
+			e.preventDefault();
+			addstock.classList.remove('active')
+			document.body.classList.remove('overflow')
+		})
+
+
+	</script>
 
 	<script type="text/javascript" src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>

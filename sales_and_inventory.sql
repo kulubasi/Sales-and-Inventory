@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2022 at 09:39 AM
+-- Generation Time: Aug 02, 2022 at 10:00 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `sales_and_inventory`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `id` int(50) NOT NULL,
+  `item` varchar(50) NOT NULL,
+  `descri` varchar(250) NOT NULL,
+  `amt` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `expenses`
+--
+
+INSERT INTO `expenses` (`id`, `item`, `descri`, `amt`) VALUES
+(1, 'transport', 'for keith boda', 5000),
+(2, 'paper', 'Small', 8),
+(3, 'Data', 'For kato', 5000);
 
 -- --------------------------------------------------------
 
@@ -74,11 +96,20 @@ INSERT INTO `users` (`id`, `email`, `fname`, `lname`, `username`, `tel`, `pswd`,
 (19, 'manager@ictspecialistsug.com', 'manager', 'ict', 'manager', '0786564345', 'manager22', 'Manager'),
 (22, 'mark@gmail.com', 'mark', 'aine', 'mark', '0786432312', 'mark22', 'Stock Manager'),
 (23, 'ainembabazipraise48@gmail.com', 'praise', 'aine', 'aine', '0786452314', 'aine22', 'Desk officer'),
-(24, 'mawarichard45@gmail.com', 'Mawa', 'Richard', 'mawarich', '+256787034826', 'mawa22', 'Admin');
+(24, 'mawarichard45@gmail.com', 'Mawa', 'Richard', 'mawarich', '+256787034826', 'mawa22', 'Admin'),
+(28, 'didas@gmail.com', 'didas', 'John', 'didas22', '076543324234', 'didas22', 'Stock Manager'),
+(29, 'didas@gmail.com', 'john', 'didas', 'didas22', '0765453632', 'didas22', 'Desk officer'),
+(30, 'didas@gmail.com', 'john', 'didas', 'didas22', '0765453632', 'ffrrrrrr', 'Desk officer');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `stock`
@@ -97,6 +128,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `expenses`
+--
+ALTER TABLE `expenses`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
@@ -106,7 +143,7 @@ ALTER TABLE `stock`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
