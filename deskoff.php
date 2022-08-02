@@ -258,9 +258,10 @@ if(isset($_SESSION['$username_j'])){
 					$item=$_POST['itm'];
 					$descri=$_POST['Descri'];
 					$qtty=$_POST['amt'];
+					$tm=date("d/m/Y h:i:sa");
 				
 
-					$sql = "INSERT INTO income (`items`, `Descript`,`Amount`) VALUES ('$item', '$descri','$qtty')";
+					$sql = "INSERT INTO income (`items`, `Descript`,`Amount`,`ct`) VALUES ('$item', '$descri','$qtty','$tm')";
 
 					if (mysqli_query($dbconn, $sql)) {
 					  echo "Item has been added successfully";
@@ -281,6 +282,7 @@ if(isset($_SESSION['$username_j'])){
 			<div>
 			<form id="addIncome" class="addIncome" method="post">
 				<label for="exampleInputEmail2" class="form-label text-uppercase">Record Income</label>
+				<?//php echo date("d/m/Y h:i:sa") ;?>
 				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close2">X</div>
 			  <div class="mb-3">
 			  	
@@ -324,9 +326,10 @@ if(isset($_SESSION['$username_j'])){
 					$item=$_POST['item'];
 					$desc=$_POST['desc'];
 					$qtty=$_POST['amount'];
+					$tm=date("d/m/Y h:i:sa");
 				
 
-					$sql = "INSERT INTO expenses (`item`, `descri`,`amt`) VALUES ('$item', '$desc','$qtty')";
+					$sql = "INSERT INTO expenses (`item`, `descri`,`amt`,`ct`) VALUES ('$item', '$desc','$qtty','$tm')";
 
 					if (mysqli_query($dbconn, $sql)) {
 					  echo "Item has been added successfully";
