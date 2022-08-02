@@ -283,9 +283,28 @@ if(isset($_SESSION['$username_j'])){
 				<label for="exampleInputEmail2" class="form-label text-uppercase">Record Income</label>
 				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close2">X</div>
 			  <div class="mb-3">
+			  	
 			    <label for="exampleInputEmail2" class="form-label">Item</label>
-			    <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="itm">
-			    <div id="emailHelp" class="form-text">Enter the item name.</div>
+			    <select name="itm">
+			    	
+			    	<?php
+			    	include("config.php");
+			  			$sqlii="SELECT name FROM stock";
+			  			$title=mysqli_query($dbconn,$sqlii);
+
+			            while ($cat = mysqli_fetch_array(
+			                                $title,MYSQLI_ASSOC)):;
+			        ?>
+			        <option value="<?php echo $cat['name'];?>">
+			        	<?php echo $cat['name'];?>
+			        </option>
+
+			        <?php
+		              endwhile;
+		            ?>
+			    </select>
+			    <!-- <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="itm">
+			    <div id="emailHelp" class="form-text">Enter the item name.</div> -->
 			  </div>
 			  <div class="mb-3">
 			    <label for="exampleInputPassword2" class="form-label">Description</label>
