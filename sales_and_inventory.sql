@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2022 at 10:00 AM
+-- Generation Time: Aug 02, 2022 at 02:57 PM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,7 +41,30 @@ CREATE TABLE `expenses` (
 INSERT INTO `expenses` (`id`, `item`, `descri`, `amt`) VALUES
 (1, 'transport', 'for keith boda', 5000),
 (2, 'paper', 'Small', 8),
-(3, 'Data', 'For kato', 5000);
+(3, 'Data', 'For kato', 5000),
+(4, 'Paper', 'printing', 12000),
+(5, '', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `income`
+--
+
+CREATE TABLE `income` (
+  `id` int(4) NOT NULL,
+  `items` varchar(25) NOT NULL,
+  `Descript` varchar(255) DEFAULT NULL,
+  `Amount` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `income`
+--
+
+INSERT INTO `income` (`id`, `items`, `Descript`, `Amount`) VALUES
+(1, 'ruler', 'perporating', 1000),
+(2, 'ID Card', '10 id cards', 100000);
 
 -- --------------------------------------------------------
 
@@ -112,6 +135,12 @@ ALTER TABLE `expenses`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `income`
+--
+ALTER TABLE `income`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stock`
 --
 ALTER TABLE `stock`
@@ -131,7 +160,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `income`
+--
+ALTER TABLE `income`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stock`
