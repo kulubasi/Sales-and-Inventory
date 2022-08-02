@@ -39,8 +39,33 @@ if(isset($_SESSION['$username_j'])){
 	      <form class="d-flex ms-auto" role="search">
 	      	<div class="input-group my-3 my-lg-0">
 	        	<input type="text" class="form-control" placeholder="Search product" aria-label="Recipient's username" aria-describedby="button-addon2">
-			  	<button class="btn btn-primary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+			  	<button class="btn btn-primary" type="button" id="button-addon2"name="btn_search"><i class="bi bi-search"></i></button>
 			</div>
+
+			<!-- WORKING ON SEARCH FORM -->
+  // <?php
+//  include("config.php");
+//  if(isset($_POST['btn_search'])){
+// 		$name = $_post['search'];
+//     //$query = "SELECT * FROM employees
+//    // WHERE first_name LIKE '%{$name}%' OR last_name LIKE '%{$name}%'";
+
+// 		$result = mysqli_query($dbconn, "SELECT * FROM income
+// 		WHERE items LIKE '%{$name}%' OR Amount LIKE '%{$name}%'");
+
+// 		while ($row = mysqli_fetch_array($result))
+// 	        {
+// 			echo'<table>';
+// 			echo'<tr>';
+// 			echo'<td>';
+// 			echo $row['items'] . " " . $row['Amount'];
+// 			echo'</td>';
+// 			echo "<br>";
+// 			echo'</tr>';
+// 			echo'</table>';
+// 	               }
+// 		mysqli_close($dbconn);}
+  //  ?> 
 
 	      </form>
 	      <ul class="navbar-nav mb-2 mb-lg-0">
