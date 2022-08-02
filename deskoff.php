@@ -259,8 +259,8 @@ if(isset($_SESSION['$username_j'])){
 				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close2">X</div>
 			  <div class="mb-3">
 			  	
-			    <label for="exampleInputEmail2" class="form-label">Item</label>
-			    <select name="itm">
+			    <label for="exampleInputEmail2" class="form-label">Item</label><br>
+			    <select name="itm" style="width: 100%;padding-left: 130px;">
 			    	
 			    	<?php
 			    	include("config.php");
@@ -270,7 +270,7 @@ if(isset($_SESSION['$username_j'])){
 			            while ($cat = mysqli_fetch_array(
 			                                $title,MYSQLI_ASSOC)):;
 			        ?>
-			        <option value="<?php echo $cat['name'];?>">
+			        <option value="<?php echo $cat['name'];?>" style="background-color: pink;" >
 			        	<?php echo $cat['name'];?>
 			        </option>
 
