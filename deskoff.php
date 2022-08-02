@@ -193,7 +193,7 @@ if(isset($_SESSION['$username_j'])){
 						<div class="card-header text-center" >Income</div>
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">View Users</h5> -->
-						    <p class="card-text text-center">Take transaction.</p>
+						    <p class="card-text text-center addit" id="addit">Take transaction.</p>
 						  </div>
 					</div>
 				</div>
@@ -207,9 +207,8 @@ if(isset($_SESSION['$username_j'])){
 						  </div>
 					</div>
 				</div>
-			</div><br>
-			<div>
-			<form id="addexpense" class="addexpense" method="post">
+				<div>
+			<form id="addExpense" class="addExpense" method="post">
 				<label for="exampleInputEmail1" class="form-label text-uppercase">Record Expense</label>
 				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close">X</div>
 			  <div class="mb-3">
@@ -227,6 +226,52 @@ if(isset($_SESSION['$username_j'])){
 			  </div>
 			  
 			  <button type="submit" name="newexpense" class="btn btn-primary">Finish record</button>
+			</form>
+			<?php
+				include("config.php");
+				if(isset($_POST['newincome'])){
+					$item=$_POST['itm'];
+					$descri=$_POST['Descri'];
+					$qtty=$_POST['amt'];
+				
+
+					$sql = "INSERT INTO income (`items`, `Descript`,`Amount`) VALUES ('$item', '$descri','$qtty')";
+
+					if (mysqli_query($dbconn, $sql)) {
+					  echo "Item has been added successfully";
+					  echo "<script>window.location.href='deskoff.php';</script>";
+					  //header('Location:managerhome.php');
+					  //exit();
+					} 
+					else {
+					  echo "Error: " . $sql . "<br>" . mysqli_error($dbconn);
+					}
+
+					mysqli_close($dbconn);
+
+				}
+				?>
+
+			</div><br>
+			<div>
+			<form id="addIncome" class="addIncome" method="post">
+				<label for="exampleInputEmail2" class="form-label text-uppercase">Record Income</label>
+				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close2">X</div>
+			  <div class="mb-3">
+			    <label for="exampleInputEmail2" class="form-label">Item</label>
+			    <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" name="itm">
+			    <div id="emailHelp" class="form-text">Enter the item name.</div>
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputPassword2" class="form-label">Description</label>
+			    <input type="text" class="form-control" id="exampleInputPassword2" name="Descri">
+			  </div>
+			  <div class="mb-3">
+			    <label for="exampleInputPassword2" class="form-label">Amount</label>
+			    <input type="number" class="form-control" id="exampleInputPassword2" name="amt">
+			  </div>
+			  
+			  <button type="submit" name="newincome" class="btn btn-primary">Finish record</button>
 			</form>
 
 			<?php
@@ -253,12 +298,36 @@ if(isset($_SESSION['$username_j'])){
 
 				}
 				?>
-
+         
 			
 		</div>
 			
 		</div>
 	</main>
+ 
+	<script type="text/javascript">
+		
+		let contain = document.getElementById('contain');
+		
+
+		let add2 = document.getElementById('addit');
+		let close1 = document.getElementById('close2');
+		let addIncome = document.getElementById('addIncome');
+		
+
+		add2.addEventListener('click',(e)=>{
+			e.preventDefault();
+			addIncome.classList.add('active')
+			document.body.classList.add('overflow')
+		})
+
+		close2.addEventListener('click',(e)=>{
+			e.preventDefault();
+			addIncome.classList.remove('active')
+			document.body.classList.remove('overflow')
+		})
+
+	</script>
 
 	<script type="text/javascript">
 		let container = document.getElementById('container');
@@ -266,7 +335,7 @@ if(isset($_SESSION['$username_j'])){
 
 		let add1 = document.getElementById('adde');
 		let close = document.getElementById('close');
-		let addstock = document.getElementById('addexpense');
+		let addstock = document.getElementById('addExpense');
 		
 
 		add1.addEventListener('click',(e)=>{
