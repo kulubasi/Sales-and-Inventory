@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2022 at 06:01 PM
+-- Generation Time: Aug 02, 2022 at 09:29 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -42,6 +42,87 @@ CREATE TABLE `expenses` (
 INSERT INTO `expenses` (`id`, `item`, `descri`, `amt`, `ct`) VALUES
 (6, 'computer', 'repaired 3computers', 70000, '02/08/2022 05:57:18pm');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `income`
+--
+
+CREATE TABLE `income` (
+  `id` int(4) NOT NULL,
+  `items` varchar(25) NOT NULL,
+  `Descript` varchar(255) DEFAULT NULL,
+  `Amount` int(10) NOT NULL,
+  `ct` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `income`
+--
+
+INSERT INTO `income` (`id`, `items`, `Descript`, `Amount`, `ct`) VALUES
+(7, 'Pens', 'sold  50 pens', 5000, '02/08/2022 05:53:31pm');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stock`
+--
+
+CREATE TABLE `stock` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `descri` varchar(50) NOT NULL,
+  `qtty` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stock`
+--
+
+INSERT INTO `stock` (`id`, `name`, `descri`, `qtty`) VALUES
+(1, 'paper', 'A4', 3),
+(2, 'Pens', 'Bic', 45),
+(3, 'Camera Film', 'Roller Film', 2),
+(4, 'Epson Printer Ink', '5 bottles of blue green and yellow', 5),
+(5, 'Envelopes', 'Small', 50),
+(6, 'Files', 'Red files', 10),
+(7, 'Box Files', 'Black green and red files', 3),
+(8, 'Books', 'A3', 50),
+(9, 'Keyboard ', 'Keyboard for dell laptop', 5),
+(10, 'Monitor', 'dellmonitor', 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `tel` varchar(50) NOT NULL,
+  `pswd` varchar(50) NOT NULL,
+  `usertype` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `fname`, `lname`, `username`, `tel`, `pswd`, `usertype`) VALUES
+(17, 'davie@gmail.com', 'david', 'kagimu', 'davie', '07654637211', 'davie22', 'Stock manager'),
+(19, 'manager@ictspecialistsug.com', 'manager', 'ict', 'manager', '0786564345', 'manager22', 'Manager'),
+(22, 'mark@gmail.com', 'mark', 'aine', 'mark', '0786432312', 'mark22', 'Stock Manager'),
+(23, 'ainembabazipraise48@gmail.com', 'praise', 'aine', 'aine', '0786452314', 'aine22', 'Desk officer'),
+(24, 'mawarichard45@gmail.com', 'Mawa', 'Richard', 'mawarich', '+256787034826', 'mawa22', 'Admin'),
+(28, 'didas@gmail.com', 'didas', 'John', 'didas22', '076543324234', 'didas22', 'Stock Manager'),
+(29, 'didas@gmail.com', 'john', 'didas', 'didas22', '0765453632', 'didas22', 'Desk officer'),
+(30, 'didas@gmail.com', 'john', 'didas', 'didas22', '0765453632', 'ffrrrrrr', 'Desk officer');
+
 --
 -- Indexes for dumped tables
 --
@@ -53,6 +134,24 @@ ALTER TABLE `expenses`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `income`
+--
+ALTER TABLE `income`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stock`
+--
+ALTER TABLE `stock`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -61,6 +160,24 @@ ALTER TABLE `expenses`
 --
 ALTER TABLE `expenses`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `income`
+--
+ALTER TABLE `income`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `stock`
+--
+ALTER TABLE `stock`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
