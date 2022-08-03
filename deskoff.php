@@ -206,6 +206,8 @@ if(isset($_SESSION['$username_j'])){
 	</div>
 	<!-- end of off canvas -->
 
+
+
 	<main class="mt-5 pt-3">
 		<div class="container-fluid" id="container">
 			<div class="row">
@@ -232,22 +234,26 @@ if(isset($_SESSION['$username_j'])){
 						  </div>
 					</div>
 				</div>
+
+
+	<!-- Add expense form -->
 				<div>
+
 			<form id="addExpense" class="addExpense" method="post">
-				<label for="exampleInputEmail1" class="form-label text-uppercase">Record Expense</label>
-				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close">X</div>
+				<label for="exampleInputEmail1" class="form-label text-uppercase">Record business Expenses</label>
+				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer; color: red;" id="close">X</div>
 			  <div class="mb-3">
 			    <label for="exampleInputEmail1" class="form-label">Item</label>
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="item">
+			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="item" required>
 			    <div id="emailHelp" class="form-text">Enter the item name.</div>
 			  </div>
 			  <div class="mb-3">
 			    <label for="exampleInputPassword1" class="form-label">Description</label>
-			    <input type="text" class="form-control" id="exampleInputPassword1" name="desc">
+			    <input type="text" class="form-control" id="exampleInputPassword1" name="desc" required>
 			  </div>
 			  <div class="mb-3">
 			    <label for="exampleInputPassword1" class="form-label">Amount</label>
-			    <input type="number" class="form-control" id="example" name="amount">
+			    <input type="number" class="form-control" id="example" name="amount" required>
 			  </div>
 			  
 			  <button type="submit" name="newexpense" class="btn btn-primary">Finish record</button>
@@ -258,7 +264,8 @@ if(isset($_SESSION['$username_j'])){
 					$item=$_POST['itm'];
 					$descri=$_POST['Descri'];
 					$qtty=$_POST['amt'];
-					$tm=date("d/m/Y h:i:sa");
+					// $tm=date("d/m/Y h:i:sa");
+					$tm=date('d.m.Y H:i:sa', time() + 1 * 60 * 60);
 				
 
 					$sql = "INSERT INTO income (`items`, `Descript`,`Amount`,`ct`) VALUES ('$item', '$descri','$qtty','$tm')";
@@ -279,11 +286,16 @@ if(isset($_SESSION['$username_j'])){
 				?>
 
 			</div><br>
+
+	<!-- End of add expense form -->
+
+
+	<!-- Start of add income form -->
 			<div>
 			<form id="addIncome" class="addIncome" method="post">
 				<label for="exampleInputEmail2" class="form-label text-uppercase">Record Income</label>
-				<?//php echo date("d/m/Y h:i:sa") ;?>
-				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close2">X</div>
+				<?php// echo date('d.m.Y H:i:sa', time() + 1 * 60 * 60); ;?>
+				<div class="" style="position: absolute; right: 20px; top: 10px;color: red; cursor: pointer;" id="close2">X</div>
 			  <div class="mb-3">
 			  	
 			    <label for="exampleInputEmail2" class="form-label">Item</label><br>
@@ -310,11 +322,11 @@ if(isset($_SESSION['$username_j'])){
 			  </div>
 			  <div class="mb-3">
 			    <label for="exampleInputPassword2" class="form-label">Description</label>
-			    <input type="text" class="form-control" id="exampleInputPassword2" name="Descri">
+			    <input type="text" class="form-control" id="exampleInputPassword2" name="Descri" required>
 			  </div>
 			  <div class="mb-3">
 			    <label for="exampleInputPassword2" class="form-label">Amount</label>
-			    <input type="number" class="form-control" id="exampleInputPassword2" name="amt">
+			    <input type="number" class="form-control" id="exampleInputPassword2" name="amt" required>
 			  </div>
 			  
 			  <button type="submit" name="newincome" class="btn btn-primary">Finish record</button>
@@ -326,7 +338,7 @@ if(isset($_SESSION['$username_j'])){
 					$item=$_POST['item'];
 					$desc=$_POST['desc'];
 					$qtty=$_POST['amount'];
-					$tm=date("d/m/Y h:i:sa");
+					$tm=date('d.m.Y H:i:sa', time() + 1 * 60 * 60);
 				
 
 					$sql = "INSERT INTO expenses (`item`, `descri`,`amt`,`ct`) VALUES ('$item', '$desc','$qtty','$tm')";
@@ -348,8 +360,122 @@ if(isset($_SESSION['$username_j'])){
          
 			
 		</div>
+
+	<!-- End of add income form -->
 			
 		</div>
+
+
+	<!-- Start of income table -->
+		<div class="row">
+				<table class="table caption-top" style="margin: 20px;">
+				  <h4 class="text-center">Your Current Incomes</h4>
+				  <thead>
+				    <tr>
+				      <th scope="col">Id</th>
+				      <th scope="col">Item</th>
+				      <th scope="col">Description</th>
+				      <th scope="col">Amount</th>
+				      <th scope="col">Date and Time sold</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <?php
+		            include("config.php");
+		            $mydb ="SELECT * FROM  income";
+		            $run=mysqli_query($dbconn,$mydb);
+		            if(mysqli_num_rows($run) > 0){
+		                echo "<div style='font-size:14px;'>"."<b>"."You current income is as  follows"."</b>"."<div>";
+		            	$a =0;               
+		                while($row=mysqli_fetch_array($run)){
+		                    $id =$row[0];
+		                    $item=$row[1];
+		                    $descri  =$row[2];
+		                    $amt =$row[3];
+		                    $ct=$row[4];
+		                    $a+=1;
+		                  echo '<tr>';
+		                    echo'<td>' . $a.'</td>';
+		                    echo'<td>' .$item.'</td>';
+		                    echo'<td>' .$descri.'</td>';
+		                    echo'<td>' .$amt.'</td>';
+		                    echo'<td>' .$ct.'</td>';
+		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';
+		                  echo '</tr>';
+		     
+		                }
+		         
+		            }else{
+		            echo "<h3 >You have not made sales yet</h3>";
+		            }
+		                  
+		            ?>
+
+
+				  </tbody>
+				</table>
+
+				
+			</div>
+
+		<!-- end of income table -->
+
+
+
+		<!-- Start of expenditure table -->
+		<div class="row">
+				<table class="table caption-top" style="margin: 20px;">
+				  <h4 class="text-center">Your Current Expenditures</h4>
+				  <thead>
+				    <tr>
+				      <th scope="col">Id</th>
+				      <th scope="col">Item</th>
+				      <th scope="col">Description</th>
+				      <th scope="col">Amount</th>
+				      <th scope="col">Date and Time</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <?php
+		            include("config.php");
+		            $mydb ="SELECT * FROM  expenses";
+		            $run=mysqli_query($dbconn,$mydb);
+		            if(mysqli_num_rows($run) > 0){
+		                echo "<div style='font-size:14px;'>"."<b>"."You current Expenses are as  follows"."</b>"."<div>";
+		            	$a =0;               
+		                while($row=mysqli_fetch_array($run)){
+		                    $id =$row[0];
+		                    $item=$row[1];
+		                    $descri  =$row[2];
+		                    $amt =$row[3];
+		                    $ct=$row[4];
+		                    $a+=1;
+		                  echo '<tr>';
+		                    echo'<td>' . $a.'</td>';
+		                    echo'<td>' .$item.'</td>';
+		                    echo'<td>' .$descri.'</td>';
+		                    echo'<td>' .$amt.'</td>';
+		                    echo'<td>' .$ct.'</td>';
+		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';
+		                  echo '</tr>';
+		     
+		                }
+		         
+		            }else{
+		            echo "<h3 >You have not yet spent any income</h3>";
+		            }
+		                  
+		            ?>
+
+
+				  </tbody>
+				</table>
+
+				
+			</div>
+
+		<!-- end of expednditure table -->
+
 	</main>
  
 	<script type="text/javascript">
