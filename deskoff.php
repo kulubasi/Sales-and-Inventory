@@ -16,6 +16,7 @@ if(isset($_SESSION['$username_j'])){
 	<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>  <!-- styles data tables -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap-5.0.2-dist/css/style.css"> <!-- My custom css file -->
+	<link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css">
 
 	<style type="text/css">
 		a{ text-decoration: none; color: white; }
@@ -368,7 +369,7 @@ if(isset($_SESSION['$username_j'])){
 
 	<!-- Start of income table -->
 		<div class="row">
-				<table class="table caption-top" style="margin: 20px;">
+				<table id="exampletable" class="table table-striped caption-top" style="margin: 20px;">
 				  <h4 class="text-center">Your Current Incomes</h4>
 				  <thead>
 				    <tr>
@@ -424,7 +425,7 @@ if(isset($_SESSION['$username_j'])){
 
 		<!-- Start of expenditure table -->
 		<div class="row">
-				<table class="table caption-top" style="margin: 20px;">
+				<table id="expensestable" class="table caption-top table-striped" style="margin: 20px;">
 				  <h4 class="text-center">Your Current Expenditures</h4>
 				  <thead>
 				    <tr>
@@ -441,7 +442,7 @@ if(isset($_SESSION['$username_j'])){
 		            $mydb ="SELECT * FROM  expenses";
 		            $run=mysqli_query($dbconn,$mydb);
 		            if(mysqli_num_rows($run) > 0){
-		                echo "<div style='font-size:14px;'>"."<b>"."You current Expenses are as  follows"."</b>"."<div>";
+		                echo "<div style='font-size:14px;'>"."<h4>"."You current Expenses are as  follows"."</h4>"."<div>";
 		            	$a =0;               
 		                while($row=mysqli_fetch_array($run)){
 		                    $id =$row[0];
@@ -527,8 +528,27 @@ if(isset($_SESSION['$username_j'])){
 	</script>
 
 	<script type="text/javascript" src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="DataTables/js/datatables.min.js"></script>
-	<script type="text/javascript" src="DataTables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+
+	<script>
+		$(document).ready(function () {
+		    $('#exampletable').DataTable();
+		    responsive: true
+		    cellborder: true
+		    hover: true
+
+		});
+
+		$(document).ready(function () {
+		    $('#expensestable').DataTable();
+		    responsive: true
+
+		});
+	</script>
+
+
 </body>
 </html>
