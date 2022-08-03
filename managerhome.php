@@ -349,7 +349,7 @@ if(isset($_SESSION['$username_j'])){
 		</div>
 		 
 		<!-- Start of stock table -->
-		<div class="stock1" id="stock">
+		<div class="tables" id="stock">
 				<table class="table caption-top" style="margin: 20px;">
 				  <h4 class="text-center">Your Current Stock</h4>
 				  <thead>
