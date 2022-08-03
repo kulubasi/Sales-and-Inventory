@@ -236,7 +236,7 @@ if(isset($_SESSION['$username_j'])){
 							<div class="card-header text-center" >My Employees</div>
 							  <div class="card-body">
 							    <!-- <h5 class="card-title">View Users</h5> -->
-							    <p class="card-text text-center">View current users.</p>
+							    <p class="card-text text-center"id="view_current_users" onclick="clicked()">View current users.</p>
 							  </div>
 						</div>
 					</div>
@@ -347,6 +347,60 @@ if(isset($_SESSION['$username_j'])){
 				</table>
 			</div>
 		</div>
+		 
+		<!-- Start of stock table -->
+		<div class="stock1" id="stock">
+				<table class="table caption-top" style="margin: 20px;">
+				  <h4 class="text-center">Your Current Stock</h4>
+				  <thead>
+				    <tr>
+				      <th scope="col">Id</th>
+				      <th scope="col">Item Name</th>
+				      <th scope="col">Description</th>
+				      <th scope="col">Quantity</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <?php
+		            include("config.php");
+		            $mydb ="SELECT * FROM  stock";
+		            $run=mysqli_query($dbconn,$mydb);
+		            if(mysqli_num_rows($run) > 0){
+		                echo "<div style='font-size:14px;'>"."<b>"."Your current Stock Standing"."</b>"."<div>";
+		            	$a =0;               
+		                while($row=mysqli_fetch_array($run)){
+		                    $id =$row[0];
+		                    $item=$row[1];
+		                    $descri  =$row[2];
+		                    $qtty =$row[3];
+		                    
+		                    $a+=1;
+		                  echo '<tr>';
+		                    echo'<td>' . $a.'</td>';
+		                    echo'<td>' .$item.'</td>';
+		                    echo'<td>' .$descri.'</td>';
+		                    echo'<td>' .$qtty.'</td>';
+		                    
+		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';
+		                  echo '</tr>';
+		     
+		                }
+		         
+		            }else{
+		            echo "<h3 >You Current Don't have Standing Stock</h3>";
+		            }
+		                  
+		            ?>
+
+
+				  </tbody>
+				</table>
+
+				
+			</div>
+
+		<!-- end of Stock table -->
+
 	</main>
 
 	<script type="text/javascript" src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
@@ -356,11 +410,14 @@ if(isset($_SESSION['$username_j'])){
 	<script type="text/javascript">
 		let cards = document.getElementById('cards')
 		let users = document.getElementById('users')
+		let stock = document.getElementById('stock') 
 		let user_offcanvas = document.getElementById('user_offcanvas')
+		let view_current_users = document.getElementById('view_current_users')
 		let dashboard = document.getElementById('dashboard')
 		function clicked(){
 			cards.classList.add('active')
 			users.classList.add('active')
+			stock.classList.add("active")
 		}
 		// user_offcanvas.addEventListener('click',(e)=>{
 		// 	cards.classList.toggle('active')
@@ -369,6 +426,7 @@ if(isset($_SESSION['$username_j'])){
 		dashboard.addEventListener('click',(e)=>{
 			cards.classList.remove('active')
 			users.classList.remove('active')
+			stock.classList.remove('active')
 		})
 	</script>
 </body>
