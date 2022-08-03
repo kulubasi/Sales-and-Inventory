@@ -246,7 +246,7 @@ if(isset($_SESSION['$username_j'])){
 							<div class="card-header text-center">Check stock</div>
 							  <div class="card-body">
 							    <!-- <h5 class="card-title">Primary card title</h5> -->
-							    <p class="card-text text-center">See how you standing in terms of stock.</p>
+							    <p class="card-text text-center" id="standing_stock" onclick="clicked()">See how you standing in terms of stock.</p>
 							  </div>
 						</div>
 					</div>
@@ -414,10 +414,12 @@ if(isset($_SESSION['$username_j'])){
 		let user_offcanvas = document.getElementById('user_offcanvas')
 		let view_current_users = document.getElementById('view_current_users')
 		let dashboard = document.getElementById('dashboard')
+		let standing_stock = document.getElementById('standing_stock')
+		
 		function clicked(){
 			cards.classList.add('active')
 			users.classList.add('active')
-			stock.classList.add("active")
+			stock.classList.remove("active")
 		}
 		// user_offcanvas.addEventListener('click',(e)=>{
 		// 	cards.classList.toggle('active')
@@ -427,6 +429,13 @@ if(isset($_SESSION['$username_j'])){
 			cards.classList.remove('active')
 			users.classList.remove('active')
 			stock.classList.remove('active')
+			
+		})
+		standing_stock.addEventListener('click',(e)=>{
+			cards.classList.remove('active')
+			users.classList.remove('active')
+			dashboard.classList.remove('active')
+			stock.classList.add('active')
 		})
 	</script>
 </body>
