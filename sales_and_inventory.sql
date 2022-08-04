@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2022 at 09:29 PM
+-- Generation Time: Aug 04, 2022 at 10:54 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,7 +40,11 @@ CREATE TABLE `expenses` (
 --
 
 INSERT INTO `expenses` (`id`, `item`, `descri`, `amt`, `ct`) VALUES
-(6, 'computer', 'repaired 3computers', 70000, '02/08/2022 05:57:18pm');
+(6, 'computer', 'repaired 3computers', 70000, '02/08/2022 05:57:18pm'),
+(7, 'Fuel', 'Paid for boda fuel', 10000, '03/08/2022 09:56:50am'),
+(8, 'Fuel', 'Generator fuel ', 43000, '03/08/2022 10:48:29am'),
+(9, 'Epson Printer Ink', '2 jets', 5000, '03/08/2022 11:50:23am'),
+(10, 'Socket repair', 'Charging socket repair + new socket', 13000, '03.08.2022 11:53:31am');
 
 -- --------------------------------------------------------
 
@@ -61,7 +65,17 @@ CREATE TABLE `income` (
 --
 
 INSERT INTO `income` (`id`, `items`, `Descript`, `Amount`, `ct`) VALUES
-(7, 'Pens', 'sold  50 pens', 5000, '02/08/2022 05:53:31pm');
+(7, 'Pens', 'sold  50 pens', 5000, '02/08/2022 05:53:31pm'),
+(9, 'Envelopes', 'Sold 2 envelopes', 1000, '03/08/2022 09:55:50am'),
+(10, 'Camera Film', 'new films', 5600, '03.08.2022 11:44:59am'),
+(11, 'Epson Printer Ink', '2 bottles', 45000, '03.08.2022 11:46:01am'),
+(12, 'Box Files', 'new files black', 45000, '03/08/2022 11:47:32am'),
+(13, 'paper', 'new paper', 50, '03.08.2022 13:25:56pm'),
+(14, 'Envelopes', '3', 1500, '03.08.2022 13:26:16pm'),
+(15, 'Books', 'new text books', 30000, '03.08.2022 13:26:37pm'),
+(16, 'Keyboard ', '2', 35000, '03.08.2022 13:27:18pm'),
+(17, 'Pens', '1 dozen', 35000, '03.08.2022 13:27:34pm'),
+(18, 'Camera Film', '2 rolls', 23000, '03.08.2022 13:28:18pm');
 
 -- --------------------------------------------------------
 
@@ -86,11 +100,9 @@ INSERT INTO `stock` (`id`, `name`, `descri`, `qtty`) VALUES
 (3, 'Camera Film', 'Roller Film', 2),
 (4, 'Epson Printer Ink', '5 bottles of blue green and yellow', 5),
 (5, 'Envelopes', 'Small', 50),
-(6, 'Files', 'Red files', 10),
 (7, 'Box Files', 'Black green and red files', 3),
 (8, 'Books', 'A3', 50),
-(9, 'Keyboard ', 'Keyboard for dell laptop', 5),
-(10, 'Monitor', 'dellmonitor', 12);
+(9, 'Keyboard ', 'Keyboard for dell laptop', 5);
 
 -- --------------------------------------------------------
 
@@ -159,13 +171,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `income`
 --
 ALTER TABLE `income`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `stock`
