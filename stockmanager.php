@@ -186,6 +186,33 @@ if(isset($_SESSION['$username_j'])){
 	<main class="mt-5 pt-3">
 		<div class="container-fluid" id="container">
 			<div class="row">
+				<?php
+		            include("config.php");
+		            $mydb ="SELECT * FROM  stock";
+		            $run=mysqli_query($dbconn,$mydb);
+		            if(mysqli_num_rows($run) > 0){
+		            	$a =0;               
+		                while($row=mysqli_fetch_array($run)){
+		                    $id =$row[0];
+		                    $name=$row[1];
+		                    $descri  =$row[2];
+		                    $qtty =$row[3];
+		                    $a+=1;
+
+		                    if ($qtty < 10) {echo '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Hello Stock Manager!</strong>'.$name.' of '.$descri.'is low Please restock <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+							}
+		                }
+		         
+		            }
+		            else{
+		            echo "<h3 >You have no current stock</h3>";
+		            }
+		                  
+		            ?>
+				
+			</div>
+			<div class="row">
 				<div class="col-md-12 fw-bold fs-3 text-center">My stock account</div>
 			</div><br>
 
