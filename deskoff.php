@@ -253,6 +253,10 @@ if(isset($_SESSION['$username_j'])){
 			    <input type="text" class="form-control" id="exampleInputPassword1" name="desc" required>
 			  </div>
 			  <div class="mb-3">
+			    <label for="exampleInputPassword1" class="form-label">Quantity</label>
+			    <input type="text" class="form-control" id="exampleInputPassword1" name="qtty">
+			  </div>
+			  <div class="mb-3">
 			    <label for="exampleInputPassword1" class="form-label">Amount</label>
 			    <input type="number" class="form-control" id="example" name="amount" required>
 			  </div>
@@ -261,15 +265,15 @@ if(isset($_SESSION['$username_j'])){
 			</form>
 			<?php
 				include("config.php");
-				if(isset($_POST['newincome'])){
-					$item=$_POST['itm'];
-					$descri=$_POST['Descri'];
-					$qtty=$_POST['amt'];
-					// $tm=date("d/m/Y h:i:sa");
+				if(isset($_POST['newexpense'])){
+					$item=$_POST['item'];
+					$desc=$_POST['desc'];
+					$qtty=$_POST['qtty'];
+					$amt=$_POST['amount'];
 					$tm=date('d.m.Y H:i:sa', time() + 1 * 60 * 60);
 				
 
-					$sql = "INSERT INTO income (`items`, `Descript`,`Amount`,`ct`) VALUES ('$item', '$descri','$qtty','$tm')";
+					$sql = "INSERT INTO expenses (`item`, `descri`,`amt`,`qtty`,`ct`) VALUES ('$item', '$desc','$amt','$qtty','$tm')";
 
 					if (mysqli_query($dbconn, $sql)) {
 					  echo "Item has been added successfully";
@@ -329,27 +333,36 @@ if(isset($_SESSION['$username_j'])){
 			    <label for="exampleInputPassword2" class="form-label">Amount</label>
 			    <input type="number" class="form-control" id="exampleInputPassword2" name="amt" required>
 			  </div>
+
+			  <div class="mb-3">
+			    <label for="exampleInputPassword2" class="form-label">Quantity</label>
+			    <input type="number" class="form-control" id="exampleInputPassword2" name="qtty" required>
+			  </div>
 			  
 			  <button type="submit" name="newincome" class="btn btn-primary">Finish record</button>
 			</form>
 
 			<?php
 				include("config.php");
-				if(isset($_POST['newexpense'])){
-					$item=$_POST['item'];
-					$desc=$_POST['desc'];
-					$qtty=$_POST['amount'];
+				if(isset($_POST['newincome'])){
+					$item=$_POST['itm'];
+					$descri=$_POST['Descri'];
+					$amt=$_POST['amt'];
+					$qtty=$_POST['qtty'];
+					// $tm=date("d/m/Y h:i:sa");
 					$tm=date('d.m.Y H:i:sa', time() + 1 * 60 * 60);
 				
 
-					$sql = "INSERT INTO expenses (`item`, `descri`,`amt`,`ct`) VALUES ('$item', '$desc','$qtty','$tm')";
+					$sql1 = "INSERT INTO income (`items`, `Descript`,`Amount`,`qtty`,`ct`) VALUES ('$item', '$descri','$amt','$qtty','$tm')";
+					$sql2="UPDATE stock SET qtty = qtty-'$qtty' WHERE name='$item'";
 
-					if (mysqli_query($dbconn, $sql)) {
-					  echo "Item has been added successfully";
-					  echo "<script>window.location.href='deskoff.php';</script>";
-					  //header('Location:managerhome.php');
-					  //exit();
-					} 
+					if (mysqli_query($dbconn, $sql1)) {
+						if (mysqli_query($dbconn, $sql2)){
+						  echo "Item has been added successfully";
+						  echo "<script>window.location.href='deskoff.php';</script>";
+						  //header('Location:managerhome.php');
+						  //exit();
+					}}
 					else {
 					  echo "Error: " . $sql . "<br>" . mysqli_error($dbconn);
 					}
@@ -358,6 +371,8 @@ if(isset($_SESSION['$username_j'])){
 
 				}
 				?>
+
+			
          
 			
 		</div>
@@ -377,6 +392,7 @@ if(isset($_SESSION['$username_j'])){
 				      <th scope="col">Item</th>
 				      <th scope="col">Description</th>
 				      <th scope="col">Amount</th>
+				      <th scope="col">Quantity</th>
 				      <th scope="col">Date and Time sold</th>
 				    </tr>
 				  </thead>
@@ -393,13 +409,15 @@ if(isset($_SESSION['$username_j'])){
 		                    $item=$row[1];
 		                    $descri  =$row[2];
 		                    $amt =$row[3];
-		                    $ct=$row[4];
+		                    $qtty=$row[4];
+		                    $ct=$row[5];
 		                    $a+=1;
 		                  echo '<tr>';
 		                    echo'<td>' . $a.'</td>';
 		                    echo'<td>' .$item.'</td>';
 		                    echo'<td>' .$descri.'</td>';
 		                    echo'<td>' .$amt.'</td>';
+		                    echo'<td>' .$qtty.'</td>';
 		                    echo'<td>' .$ct.'</td>';
 		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';
 		                  echo '</tr>';
@@ -432,6 +450,7 @@ if(isset($_SESSION['$username_j'])){
 				      <th scope="col">Id</th>
 				      <th scope="col">Item</th>
 				      <th scope="col">Description</th>
+				      <th scope="col">Quantity</th>
 				      <th scope="col">Amount</th>
 				      <th scope="col">Date and Time</th>
 				    </tr>
@@ -448,13 +467,15 @@ if(isset($_SESSION['$username_j'])){
 		                    $id =$row[0];
 		                    $item=$row[1];
 		                    $descri  =$row[2];
+		                    $qtty=$row[4];
 		                    $amt =$row[3];
-		                    $ct=$row[4];
+		                    $ct=$row[5];
 		                    $a+=1;
 		                  echo '<tr>';
 		                    echo'<td>' . $a.'</td>';
 		                    echo'<td>' .$item.'</td>';
 		                    echo'<td>' .$descri.'</td>';
+		                    echo'<td>' .$qtty.'</td>';
 		                    echo'<td>' .$amt.'</td>';
 		                    echo'<td>' .$ct.'</td>';
 		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';

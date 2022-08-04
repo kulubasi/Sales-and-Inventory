@@ -218,3 +218,13 @@ main{
 .cards.active{
     display: none;
 }
+
+
+
+
+/*start of stock manager styles*/
+
+.card:hover {
+  background-color: yellow;
+}
+/*end of stock manager styles*/

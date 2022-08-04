@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2022 at 10:54 AM
+-- Generation Time: Aug 04, 2022 at 03:28 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,6 +32,7 @@ CREATE TABLE `expenses` (
   `item` varchar(50) NOT NULL,
   `descri` varchar(250) NOT NULL,
   `amt` int(50) NOT NULL,
+  `qtty` int(50) NOT NULL,
   `ct` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,12 +40,15 @@ CREATE TABLE `expenses` (
 -- Dumping data for table `expenses`
 --
 
-INSERT INTO `expenses` (`id`, `item`, `descri`, `amt`, `ct`) VALUES
-(6, 'computer', 'repaired 3computers', 70000, '02/08/2022 05:57:18pm'),
-(7, 'Fuel', 'Paid for boda fuel', 10000, '03/08/2022 09:56:50am'),
-(8, 'Fuel', 'Generator fuel ', 43000, '03/08/2022 10:48:29am'),
-(9, 'Epson Printer Ink', '2 jets', 5000, '03/08/2022 11:50:23am'),
-(10, 'Socket repair', 'Charging socket repair + new socket', 13000, '03.08.2022 11:53:31am');
+INSERT INTO `expenses` (`id`, `item`, `descri`, `amt`, `qtty`, `ct`) VALUES
+(6, 'computer', 'repaired 3computers', 70000, 0, '02/08/2022 05:57:18pm'),
+(7, 'Fuel', 'Paid for boda fuel', 10000, 0, '03/08/2022 09:56:50am'),
+(8, 'Fuel', 'Generator fuel ', 43000, 0, '03/08/2022 10:48:29am'),
+(9, 'Epson Printer Ink', '2 jets', 5000, 0, '03/08/2022 11:50:23am'),
+(10, 'Socket repair', 'Charging socket repair + new socket', 13000, 0, '03.08.2022 11:53:31am'),
+(11, 'transport', 'For kato', 400, 0, '04.08.2022 15:56:11pm'),
+(12, 'transport', 'For amanda', 5000, 0, '04.08.2022 16:26:38pm'),
+(13, 'Masks', 'Bought masks', 3000, 3, '04.08.2022 16:27:17pm');
 
 -- --------------------------------------------------------
 
@@ -57,6 +61,7 @@ CREATE TABLE `income` (
   `items` varchar(25) NOT NULL,
   `Descript` varchar(255) DEFAULT NULL,
   `Amount` int(10) NOT NULL,
+  `qtty` int(50) NOT NULL,
   `ct` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -64,18 +69,16 @@ CREATE TABLE `income` (
 -- Dumping data for table `income`
 --
 
-INSERT INTO `income` (`id`, `items`, `Descript`, `Amount`, `ct`) VALUES
-(7, 'Pens', 'sold  50 pens', 5000, '02/08/2022 05:53:31pm'),
-(9, 'Envelopes', 'Sold 2 envelopes', 1000, '03/08/2022 09:55:50am'),
-(10, 'Camera Film', 'new films', 5600, '03.08.2022 11:44:59am'),
-(11, 'Epson Printer Ink', '2 bottles', 45000, '03.08.2022 11:46:01am'),
-(12, 'Box Files', 'new files black', 45000, '03/08/2022 11:47:32am'),
-(13, 'paper', 'new paper', 50, '03.08.2022 13:25:56pm'),
-(14, 'Envelopes', '3', 1500, '03.08.2022 13:26:16pm'),
-(15, 'Books', 'new text books', 30000, '03.08.2022 13:26:37pm'),
-(16, 'Keyboard ', '2', 35000, '03.08.2022 13:27:18pm'),
-(17, 'Pens', '1 dozen', 35000, '03.08.2022 13:27:34pm'),
-(18, 'Camera Film', '2 rolls', 23000, '03.08.2022 13:28:18pm');
+INSERT INTO `income` (`id`, `items`, `Descript`, `Amount`, `qtty`, `ct`) VALUES
+(7, 'Pens', 'sold  50 pens', 5000, 0, '02/08/2022 05:53:31pm'),
+(9, 'Envelopes', 'Sold 2 envelopes', 1000, 0, '03/08/2022 09:55:50am'),
+(10, 'Camera Film', 'new films', 5600, 0, '03.08.2022 11:44:59am'),
+(11, 'Epson Printer Ink', '2 bottles', 45000, 0, '03.08.2022 11:46:01am'),
+(12, 'Box Files', 'new files black', 45000, 0, '03/08/2022 11:47:32am'),
+(22, 'Pens', 'bic', 500, 0, '04.08.2022 16:03:00pm'),
+(24, 'Envelopes', 'sold envelopes', 1000, 2, '04.08.2022 16:14:11pm'),
+(25, 'Envelopes', 'sold envelopes', 35000, 7, '04.08.2022 16:15:01pm'),
+(26, 'Envelopes', 'sold envelopes', 4500, 9, '04.08.2022 16:16:17pm');
 
 -- --------------------------------------------------------
 
@@ -95,14 +98,13 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id`, `name`, `descri`, `qtty`) VALUES
-(1, 'paper', 'A4', 3),
-(2, 'Pens', 'Bic', 45),
+(1, 'paper', 'A4', 70),
+(2, 'Pens', 'Bic', 52),
 (3, 'Camera Film', 'Roller Film', 2),
 (4, 'Epson Printer Ink', '5 bottles of blue green and yellow', 5),
-(5, 'Envelopes', 'Small', 50),
+(5, 'Envelopes', 'Small', 30),
 (7, 'Box Files', 'Black green and red files', 3),
-(8, 'Books', 'A3', 50),
-(9, 'Keyboard ', 'Keyboard for dell laptop', 5);
+(8, 'Books', 'A3', 50);
 
 -- --------------------------------------------------------
 
@@ -171,19 +173,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `income`
 --
 ALTER TABLE `income`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`

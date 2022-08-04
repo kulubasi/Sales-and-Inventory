@@ -11,14 +11,16 @@ if(isset($_SESSION['$username_j'])){
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Stock</title>
-	<link rel="stylesheet" type="text/css" href="bootstrap-5.0.2-dist/css/bootstrap.min.css"> 
+	<title>Stock</title> 
 	<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>  <!-- styles data tables -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+	<link rel="stylesheet" type="text/css" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="DataTables/DataTables-1.12.1/css/dataTables.bootstrap5.min.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap-5.0.2-dist/css/style.css"> <!-- My custom css file -->
 
 	<style type="text/css">
-		a{ text-decoration: none; color: white; }
+		/*a{ text-decoration: none; color: white; }*/
 	</style>
 </head>
 <body class="" style="font-family:cursive;font-size: large;">
@@ -109,19 +111,19 @@ if(isset($_SESSION['$username_j'])){
 					  <div class="">
 					  	<ul class="navbar-nav ps-3">
 					  		<li>
-					  			<a href="" class="nav-link px-3">
+					  			<a id="add" href="" class="nav-link px-3">
 					  				<span class="me-2">
 					  					<i class="bi bi-layout-split"></i>
 					  				</span>
-					  				<span id="add">Add stock</span>
+					  				<span >Restock items</span>
 					  			</a>
 					  		</li>
 					  		<li>
-					  			<a href="" class="nav-link px-3">
+					  			<a id="addnew" href="" class="nav-link px-3">
 					  				<span class="me-2">
 					  					<i class="bi bi-layout-split"></i>
 					  				</span>
-					  				<span id="addnew">Add new Product</span>
+					  				<span >Add new Product</span>
 					  			</a>
 					  		</li>
 
@@ -190,17 +192,17 @@ if(isset($_SESSION['$username_j'])){
 			<div class="row">
 				<div class="col" >
 					<div class="card text-white bg-success mb-3 h-100"  >
-						<div class="card-header text-center" >Store</div>
+						<!-- <div class="card-header text-center" >Store</div> -->
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">View Users</h5> -->
-						    <p class="card-text text-center">Check Store.</p>
+						    <p class="card-text text-center">My Store.</p>
 						  </div>
 					</div>
 				</div>
 
 				<div class="col">
 					<div class="card text-white bg-success mb-3 h-100" >
-						<div class="card-header text-center">New Product</div>
+						<!-- <div class="card-header text-center">New Product</div> -->
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">Primary card title</h5> -->
 						    <p class="card-text text-center">Add new Product.</p>
@@ -209,7 +211,7 @@ if(isset($_SESSION['$username_j'])){
 				</div>
 			</div><br>
 			<div class="row">
-				<table class="table caption-top" style="margin: 20px;">
+				<table id="sample" class="table caption-top" style="margin: 20px;">
 				  <h4 class="text-center">Current Stock</h4>
 				  <thead>
 				    <tr>
@@ -220,6 +222,7 @@ if(isset($_SESSION['$username_j'])){
 				    </tr>
 				  </thead>
 				  <tbody>
+
 				    <?php
 		            include("config.php");
 		            $mydb ="SELECT * FROM  stock";
@@ -248,6 +251,7 @@ if(isset($_SESSION['$username_j'])){
 		            }
 		                  
 		            ?>
+		       
 
 
 				  </tbody>
@@ -255,25 +259,7 @@ if(isset($_SESSION['$username_j'])){
 
 				
 			</div>
-			<!-- <div class="row">
-				<div class="col-md-6">
-					<div class="card">
-						<div class="card-header">Charts</div>
-						<div class="card-body">
-							<canvas class="chart" width="400" height="200"></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-12">
-					<div class="card">
-						<div class="card-header">Data Tables</div>
-						<div class="card-body"></div>
-					</div>
-				</div>
-			</div> -->
+			
 		</div>
 
 		<div>
@@ -297,6 +283,8 @@ if(isset($_SESSION['$username_j'])){
 			  <button type="submit" name="newpdt" class="btn btn-primary">Add to stock</button>
 			</form>
 
+
+			<!-- inserting new product into stock table -->
 			<?php
 				include("config.php");
 				if(isset($_POST['newpdt'])){
@@ -321,31 +309,94 @@ if(isset($_SESSION['$username_j'])){
 
 				}
 				?>
-
+				<!-- end of inserting new product to stock table -->
 			
 		</div>
 
 
 		<div>
-			<form id="addstock" class="addstock">
+			<form id="addstock" class="addstock" method="post">
 				<label for="exampleInputEmail1" class="form-label text-uppercase">Restock item</label>
 				<div class="" style="position: absolute; right: 20px; top: 10px; cursor: pointer;" id="close">X</div>
 			  <div class="mb-3">
 			    <label for="exampleInputEmail1" class="form-label">Item name</label>
-			    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-			    <div id="emailHelp" class="form-text">Enter the item name.</div>
+			    <select name="itmname" style="width: 100%;padding-left: 130px;">
+			    	
+			    	<?php
+			    	include("config.php");
+			  			$sqlii="SELECT name FROM stock";
+			  			$title=mysqli_query($dbconn,$sqlii);
+
+			            while ($cat = mysqli_fetch_array(
+			                                $title,MYSQLI_ASSOC)):;
+			        ?>
+			        <option value="<?php echo $cat['name'];?>" style="background-color: pink;" >
+			        	<?php echo $cat['name'];?>
+			        </option>
+
+			        <?php
+		              endwhile;
+		            ?>
+			    </select>
+			    <div id="emailHelp" class="form-text">Select the item name.</div>
 			  </div>
 			  <div class="mb-3">
 			    <label for="exampleInputPassword1" class="form-label">Description</label>
-			    <input type="text" class="form-control" id="exampleInputPassword1">
+			    <select name="descri" style="width: 100%;padding-left: 130px;">
+			    	
+			    	<?php
+			    	include("config.php");
+			  			$sqlii="SELECT descri FROM stock";
+			  			$title=mysqli_query($dbconn,$sqlii);
+
+			            while ($cat = mysqli_fetch_array(
+			                                $title,MYSQLI_ASSOC)):;
+			        ?>
+			        <option value="<?php echo $cat['descri'];?>" style="background-color: pink;" >
+			        	<?php echo $cat['descri'];?>
+			        </option>
+
+			        <?php
+		              endwhile;
+		            ?>
+			    </select>
 			  </div>
 			  <div class="mb-3">
 			    <label for="exampleInputPassword1" class="form-label">Quantity</label>
-			    <input type="number" class="form-control" id="exampleInputPassword1">
+			    <input type="number" class="form-control" id="exampleInputPassword1" name="qtty">
 			  </div>
 			  
-			  <button type="submit" class="btn btn-primary">Add to stock</button>
+			  <button type="submit" name="restockform" class="btn btn-primary">Add to stock</button>
 			</form>
+
+			<!-- start of restocking product into stock table -->
+			<?php
+				include("config.php");
+				if(isset($_POST['restockform'])){
+					$item=$_POST['itmname'];
+					$desc=$_POST['desc'];
+					$qtty=$_POST['qtty'];
+				
+
+					// $sql = "INSERT INTO stock (`name`, `descri`,`qtty`) VALUES ('$item', '$desc','$qtty')";
+					$sql="UPDATE stock SET qtty = qtty+'$qtty' WHERE name='$item'";
+					
+
+					if (mysqli_query($dbconn, $sql)) {
+					  echo "Item has been restocked successfully";
+					  echo "<script>window.location.href='stockmanager.php';</script>";
+					  //header('Location:managerhome.php');
+					  //exit();
+					} 
+					else {
+					  echo "Error: " . $sql . "<br>" . mysqli_error($dbconn);
+					}
+
+					mysqli_close($dbconn);
+
+				}
+				?>
+				<!-- end of restocking product to stock table -->
 		</div>
 	</main>
 	<script type="text/javascript">
@@ -386,10 +437,21 @@ if(isset($_SESSION['$username_j'])){
 			document.body.classList.remove('overflow')
 		})
 	</script>
+
+	
 	<script type="text/javascript" src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="DataTables/js/datatables.min.js"></script>
-	<script type="text/javascript" src="DataTables/DataTables-1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    $('#sample').DataTable();
+		});
+	</script>
+
 
 
 	
