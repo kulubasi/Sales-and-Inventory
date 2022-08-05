@@ -163,7 +163,7 @@
 
 		if (mysqli_query($dbconn, $sql)) {
 		  echo "New user has been created successfully";
-		  echo "<script>window.location.href='sendmail.php';</script>";
+		  echo "<script>window.location.href='aftersign.html';</script>";
 		  //header('Location:managerhome.php');
 		  //exit();
 		} 
