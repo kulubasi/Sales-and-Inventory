@@ -54,39 +54,42 @@
 			<img src="img/ictlogo.png" style="width:15em; height:12em">
 		</div>
 
-		<div class="col">
+		 <div class="col"><a href="login.php">
 			<div class="text-center" style="width: auto; border: 1px solid red;padding: 30px; border-radius: 30px 30px 30px;">
 			  
 			    <h5 class="card-title">Record Sales</h5>
 			    <p class="card-text">Easily note down sales carried out on a daily basis.</p>
 			    <!-- <a href="#" class="card-link">Card link</a>
 			    <a href="#" class="card-link">Another link</a> -->
-			  </div><br><br>
+			  </div></a><br><br>
 
-			  <div class="text-center" style="width: auto; border: 1px solid red;padding: 30px; border-radius: 30px 30px 30px;">
+			  <a href="login.php"><div class="text-center" style="width: auto; border: 1px solid red;padding: 30px; border-radius: 30px 30px 30px;">
 			  
 			    <h5 class="card-title">Record Expenditures</h5>
 			    <p class="card-text">Accurately record expenses incured on a daily basis.</p>
 			    <!-- <a href="#" class="card-link">Card link</a>
 			    <a href="#" class="card-link">Another link</a> -->
-			  </div>
+			  </div></a>
+
 			</div>
 		<div class="col"><br>
-			<div class="text-center" style="width: auto; border: 1px solid red;padding: 30px; border-radius: 30px 30px 30px;">
+			<a href="login.php">
+				<div class="text-center" style="width: auto; border: 1px solid red;padding: 30px; border-radius: 30px 30px 30px;">
 			  
 			    <h5 class="card-title">Manage Stock</h5>
 			    <p class="card-text">Easily monitor amount of goods in stock.</p>
 			    <!-- <a href="#" class="card-link">Card link</a>
 			    <a href="#" class="card-link">Another link</a> -->
-			  </div> <br><br>
+			  </div></a> <br><br>
 
-			  <div class="text-center" style="width: auto; border: 1px solid red;padding: 30px; border-radius: 30px 30px 30px;">
+			  <a href="login.php">
+			  	<div class="text-center" style="width: auto; border: 1px solid red;padding: 30px; border-radius: 30px 30px 30px;">
 			  
 			    <h5 class="card-title">Manage your business</h5>
 			    <p class="card-text">Efficiently manage your employees as well as your products in the work environment.</p>
 			    <!-- <a href="#" class="card-link">Card link</a>
 			    <a href="#" class="card-link">Another link</a> -->
-			  </div>
+			  </div></a>
 			</div>
 	</div><br>
 	<div class="row">

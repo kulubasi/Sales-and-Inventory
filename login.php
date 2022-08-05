@@ -157,11 +157,12 @@
                     </div>
 		                                 
                     <div class="input-group mb-2">
-                        <input type="password" name="password" id="password" required class="form-control input_pass" placeholder="Password" >
+                        <input type="password" name="password" id="typepassword" required class="form-control input_pass" placeholder="Password" >
                         <div class="input-group-append">
-                            <span class="input-group-text"><i class="fa fa-key fa-2x"></i>
+                            <span class="input-group-text"><i class="fa fa-eye fa-2x" id="togglepassword" style="cursor:pointer;"></i>
                             </span>
                         </div>
+                        
                     </div>
                     <div class="input-group mb-2">
                      <select class="form-select" aria-label="Default select example" name="usertype">
@@ -188,5 +189,16 @@
 	</div>
 
 
+<script type="text/javascript">
+	const togglepassword=document.querySelector('#togglepassword');
+	const typepassword=document.querySelector('#typepassword');
+
+	togglepassword.addEventListener('click',function(e){
+		const type = typepassword.getAttribute('type')==='password' ? 'text' : 'password';
+		typepassword.setAttribute('type',type);Na
+		this.classList.toggle('fa-eye-slash');
+	});
+
+</script>
 </body>
 </html>
