@@ -56,6 +56,11 @@ main{
 .stock1{background: white;z-index: 1;position: fixed;top: 100px;left: 430px; width: 800px;padding: 50px; transform: translate(0,0) scale(0);transition: 1s;}
 .stock1.active{transform: translate(0,0)scale(1.0);}
 
+.currentstock{background: white;z-index: 1; transform: translate(0,0) scale(0);}
+.currentstock.active{transform: translate(0,0)scale(1.0);}
+
+.displaycards{background: white;z-index: 1; transform: translate(1,0) scale(0);}
+.displaycards.active{transform: translate(0,0)scale(0.0);}
 
 .overflow{position:absolute;top: 0;bottom: 0;right: 0;left: 0;background: grey;}
 
