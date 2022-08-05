@@ -250,6 +250,7 @@ if(isset($_SESSION['$username_j'])){
 							  </div>
 						</div>
 					</div>
+
 				</div><br>
 				<div class="row">
 

@@ -110,7 +110,7 @@ if(isset($_SESSION['$username_j'])){
 	  				<span class="me-2">
 	  					<i class="bi bi-speedometer2"></i>
 	  				</span>
-	  				<span>Dashboard</span>
+	  				<span id="dashboard1">Dashboard</span>
 	  				</a>
 	  			</li>
 
@@ -214,7 +214,7 @@ if(isset($_SESSION['$username_j'])){
 			<div class="row">
 				<div class="col-md-12 fw-bold fs-3">My sales account</div>
 			</div><br>
-
+			<div id="gencards" class="gencards">
 			<div class="row">
 				<div class="col" >
 					<div class="card text-white bg-success mb-3 h-100"  >
@@ -235,9 +235,39 @@ if(isset($_SESSION['$username_j'])){
 						  </div>
 					</div>
 				</div>
+			</div>
+				<br>
+
+				<!-- Adding more cards -->
+
+				<div class="cards1" id="cards1">
+				<div class="row">
+					<div class="col" >
+						<div class="card text-white bg-success mb-3 h-100"  >
+							<div class="card-header text-center" >Income Transaction</div>
+							  <div class="card-body">
+							    <!-- <h5 class="card-title">View Users</h5> -->
+							    <p class="card-text text-center"id="show_income" onclick="clicked_income()">Show Income Trnasaction .</p>
+							  </div>
+						</div>
+					</div>
 
 
-	<!-- Add expense form -->
+					    <div class="col" id="col">
+						<div class="card text-white bg-success mb-3 h-100" >
+							<div class="card-header text-center">Expense Transaction</div>
+							  <div class="card-body">
+							    <!-- <h5 class="card-title">Primary card title</h5> -->
+							    <p class="card-text text-center" id="show_expenses" onclick="clicked_expenses()">Show Expenses.</p>
+							  </div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+
+
+				<!-- Add expense form -->
 				<div>
 
 			<form id="addExpense" class="addExpense" method="post">
@@ -299,7 +329,7 @@ if(isset($_SESSION['$username_j'])){
 			<div>
 			<form id="addIncome" class="addIncome" method="post">
 				<label for="exampleInputEmail2" class="form-label text-uppercase">Record Income</label>
-				<?php// echo date('d.m.Y H:i:sa', time() + 1 * 60 * 60); ;?>
+				<?php // echo date('d.m.Y H:i:sa', time() + 1 * 60 * 60); ;?>
 				<div class="" style="position: absolute; right: 20px; top: 10px;color: red; cursor: pointer;" id="close2">X</div>
 			  <div class="mb-3">
 			  	
@@ -379,11 +409,11 @@ if(isset($_SESSION['$username_j'])){
 
 	<!-- End of add income form -->
 			
-		</div>
+		
 
 
 	<!-- Start of income table -->
-		<div class="row">
+		<div class="row tables" id="income">
 				<table id="exampletable" class="table table-striped caption-top" style="margin: 20px;">
 				  <h4 class="text-center">Your Current Incomes</h4>
 				  <thead>
@@ -442,7 +472,7 @@ if(isset($_SESSION['$username_j'])){
 
 
 		<!-- Start of expenditure table -->
-		<div class="row">
+		<div class="row tables" id="expenses">
 				<table id="expensestable" class="table caption-top table-striped" style="margin: 20px;">
 				  <h4 class="text-center">Your Current Expenditures</h4>
 				  <thead>
@@ -548,6 +578,42 @@ if(isset($_SESSION['$username_j'])){
 
 	</script>
 
+	<!-- Adding js on show income and expenses -->
+	<script>
+		let income = document.getElementById('income')
+		let expenses = document.getElementById('expenses')
+		let show_income = document.getElementById('how_income')
+		let show_expenses = document.getElementById('show_expenses')
+		let gencards = document.getElementById('gencards')
+		let dashboard1 = document.getElementById('dashboard1')
+
+			
+		function clicked_income(){
+			income.classList.remove('active')
+			expenses.classList.add('active')
+			expensestable.classList.add('active')
+			
+			gencards.classList.add('active')
+		}
+
+		function clicked_expenses(){
+			income.classList.add('active')
+			expenses.classList.remove('active')
+			exampletable.classList.add('active')
+			gencards.classList.add('active')
+			
+
+		}
+		dashboard1.addEventListener('click',(e)=>{
+			income.classList.remove('active')
+			expenses.classList.remove('active')
+			expensestable.classList.remove('active')
+			exampletable.classList.remove('active')
+			gencards.classList.remove('active')
+			
+		})
+	</script>
+
 	<script type="text/javascript" src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
@@ -569,6 +635,8 @@ if(isset($_SESSION['$username_j'])){
 
 		});
 	</script>
+
+
 
 
 </body>

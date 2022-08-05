@@ -56,6 +56,8 @@ main{
 .stock1{background: white;z-index: 1;position: fixed;top: 100px;left: 430px; width: 800px;padding: 50px; transform: translate(0,0) scale(0);transition: 1s;}
 .stock1.active{transform: translate(0,0)scale(1.0);}
 
+/* .gencards.active{display: none;} */
+
 
 .overflow{position:absolute;top: 0;bottom: 0;right: 0;left: 0;background: grey;}
 
@@ -218,6 +220,15 @@ main{
 .cards.active{
     display: none;
 }
+
+/* Adding css on show income and expenses */
+.gencards{
+    display: block;
+}
+.gencards.active{
+    display: none;
+}
+
 
 
 
