@@ -218,6 +218,7 @@ if(isset($_SESSION['$username_j'])){
 			<div class="row">
 				<div class="col" >
 					<div class="card text-white bg-success mb-3 h-100"  >
+						<div class="card-header text-center" >Income</div>
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">View Users</h5> -->
 						    <p class="card-text text-center addit" id="addit">Take transaction.</p>
@@ -227,6 +228,7 @@ if(isset($_SESSION['$username_j'])){
 
 				<div class="col">
 					<div class="card text-white bg-success mb-3 h-100" >
+						<div class="card-header text-center">Expenditures</div>
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">Primary card title</h5> -->
 						    <p class="card-text text-center adde" id="adde">Record Expense.</p>
@@ -242,6 +244,7 @@ if(isset($_SESSION['$username_j'])){
 				<div class="row">
 					<div class="col" >
 						<div class="card text-white bg-success mb-3 h-100"  >
+							<div class="card-header text-center" >Income Transaction</div>
 							  <div class="card-body">
 							    <!-- <h5 class="card-title">View Users</h5> -->
 							    <p class="card-text text-center"id="show_income" onclick="clicked_income()">Show Income Trnasaction .</p>
@@ -252,6 +255,7 @@ if(isset($_SESSION['$username_j'])){
 
 					    <div class="col" id="col">
 						<div class="card text-white bg-success mb-3 h-100" >
+							<div class="card-header text-center">Expense Transaction</div>
 							  <div class="card-body">
 							    <!-- <h5 class="card-title">Primary card title</h5> -->
 							    <p class="card-text text-center" id="show_expenses" onclick="clicked_expenses()">Show Expenses.</p>
