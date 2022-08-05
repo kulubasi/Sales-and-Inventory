@@ -217,25 +217,21 @@ if(isset($_SESSION['$username_j'])){
 			<div id="gencards" class="gencards">
 			<div class="row">
 				<div class="col" >
-					<div class="card text-white bg-success mb-3 h-100"  >
-						<div class="card-header text-center" >Income</div>
+					<div class="card bg-light mb-3 h-100"  >
+						<!-- <div class="card-header text-center" >Income</div> -->
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">View Users</h5> -->
-<<<<<<< HEAD
 						    <p class="card-text text-success text-center addit" id="addit"> <i class="bi bi-coin"></i><br>Take Income Inflows.</p>
-=======
-						    <p class="card-text text-center addit" id="addit">Take transaction.</p>
->>>>>>> parent of 589f224 (added icons)
 						  </div>
 					</div>
 				</div>
 
 				<div class="col">
-					<div class="card text-white bg-success mb-3 h-100" >
-						<div class="card-header text-center">Expenditures</div>
+					<div class="card bg-light mb-3 h-100" >
+						<!-- <div class="card-header text-center">Expenditures</div> -->
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">Primary card title</h5> -->
-						    <p class="card-text text-center adde" id="adde">Record Expense.</p>
+						    <p class="card-text text-success text-center adde" id="adde"> <i class="bi bi-cash-stack"></i> <br> Record Expenses.</p>
 						  </div>
 					</div>
 				</div>
@@ -247,26 +243,17 @@ if(isset($_SESSION['$username_j'])){
 				<div class="cards1" id="cards1">
 				<div class="row">
 					<div class="col" >
-<<<<<<< HEAD
 							<div class="card-header text-center" >Income Transaction</div>
-=======
-						<div class="card text-white bg-success mb-3 h-100"  >
-							<div class="card-header text-center" >Income Transaction</div>
-							  <div class="card-body">
-							    <!-- <h5 class="card-title">View Users</h5> -->
-							    <p class="card-text text-center"id="show_income" onclick="clicked_income()">Show Income Trnasaction .</p>
-							  </div>
->>>>>>> parent of 589f224 (added icons)
 						</div>
 					</div>
 
 
 					    <div class="col" id="col">
-						<div class="card text-white bg-success mb-3 h-100" >
-							<div class="card-header text-center">Expense Transaction</div>
+						<div class="card mb-3 h-100 bg-light" >
+							<!-- <div class="card-header text-center">Expense Transaction</div> -->
 							  <div class="card-body">
 							    <!-- <h5 class="card-title">Primary card title</h5> -->
-							    <p class="card-text text-center" id="show_expenses" onclick="clicked_expenses()">Show Expenses.</p>
+							    <p class="card-text text-center text-success" id="show_expenses" onclick="clicked_expenses()"><i class="bi bi-currency-exchange bi-4"></i><br>My Expenses .</p>
 							  </div>
 						</div>
 					</div>
