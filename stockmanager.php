@@ -82,7 +82,7 @@ if(isset($_SESSION['$username_j'])){
 	  				</div>
 	  			</li>
 	  			<li>
-	  				<a href="#" class="nav-link px-3 active">
+	  				<a href="#" class="nav-link px-3 active" id="stockdashboard">
 	  				<span class="me-2">
 	  					<i class="bi bi-speedometer2"></i>
 	  				</span>
@@ -199,8 +199,7 @@ if(isset($_SESSION['$username_j'])){
 		                    $qtty =$row[3];
 		                    $a+=1;
 
-		                    if ($qtty < 10) {echo '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Hello Stock Manager!</strong>'.$name.' of '.$descri.'is low Please restock <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>';
+		                    if ($qtty < 10) {echo '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Hello Stock Manager! </strong>'.$name.' of '.$descri.' is low Please restock <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 							}
 		                }
 		         
@@ -216,28 +215,29 @@ if(isset($_SESSION['$username_j'])){
 				<div class="col-md-12 fw-bold fs-3 text-center">My stock account</div>
 			</div><br>
 
-			<div class="row">
+			<div class="row displaycards" id="displaycards">
 				<div class="col" >
-					<div class="card text-white bg-success mb-3 h-100"  >
+					<div class="card bg-light mb-3 h-100" id="mystore" >
 						<!-- <div class="card-header text-center" >Store</div> -->
 						  <div class="card-body">
+
 						    <!-- <h5 class="card-title">View Users</h5> -->
-						    <p class="card-text text-center">My Store.</p>
+						    <p class="card-text text-center text-success"> <i class="bi bi-shop-window"></i><br>My Store.</p>
 						  </div>
 					</div>
 				</div>
 
 				<div class="col">
-					<div class="card text-white bg-success mb-3 h-100" >
+					<div class="card bg-light mb-3 h-100" >
 						<!-- <div class="card-header text-center">New Product</div> -->
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">Primary card title</h5> -->
-						    <p class="card-text text-center">Add new Product.</p>
+						    <p class="card-text text-center text-success"> <i class="bi bi-plus-circle-dotted"></i> <br>Add new Product.</p>
 						  </div>
 					</div>
 				</div>
 			</div><br>
-			<div class="row">
+			<div class="row currentstock" id="currentstock" >
 				<table id="sample" class="table caption-top" style="margin: 20px;">
 				  <h4 class="text-center">Current Stock</h4>
 				  <thead>
@@ -439,6 +439,11 @@ if(isset($_SESSION['$username_j'])){
 		let close1 = document.getElementById('close1');
 		let addnewproduct = document.getElementById('addnewproduct');
 
+		let mystore = document.getElementById('mystore');
+		let currentstock = document.getElementById('currentstock');
+		let displaycards = document.getElementById('displaycards');
+		let dashboard = document.getElementById('stockdashboard');
+
 		add1.addEventListener('click',(e)=>{
 			e.preventDefault();
 			addstock.classList.add('active')
@@ -461,6 +466,20 @@ if(isset($_SESSION['$username_j'])){
 		close1.addEventListener('click',(e)=>{
 			e.preventDefault();
 			addnewproduct.classList.remove('active')
+			document.body.classList.remove('overflow')
+		})
+
+		mystore.addEventListener('click',(e)=>{
+			e.preventDefault();
+			currentstock.classList.add('active')
+			displaycards.classList.add('active')
+			
+		})
+
+		dashboard.addEventListener('click',(e)=>{
+			e.preventDefault();
+			currentstock.classList.remove('active')
+			displaycards.classList.remove('active')
 			document.body.classList.remove('overflow')
 		})
 	</script>
