@@ -59,19 +59,19 @@
 <form id="addExpense" class="addExpense" method="post">
     <label for="exampleInputEmail1" class="form-label text-uppercase"><b>Update business Expenses</b></label>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Item</label>
+    <label for="exampleInputEmail1" class="form-label"><b>Item</b></label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="itemid" value="<?php echo htmlspecialchars($item); ?>">
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Description</label>
+    <label for="exampleInputPassword1" class="form-label"><b>Description</b></label>
     <input type="text" class="form-control" id="exampleInputPassword1" name="descriid" required value=<?php echo $descri;?> >
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Quantity</label>
+    <label for="exampleInputPassword1" class="form-label"><b>Quantity</b></label>
     <input type="text" class="form-control" id="exampleInputPassword1" name="qttyid" value=<?php echo $qtty;?>>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Amount</label>
+    <label for="exampleInputPassword1" class="form-label"><b>Amount</b></label>
     <input type="number" class="form-control" id="example" name="amountid" value=<?php echo $amt;?>>
   </div>
   
