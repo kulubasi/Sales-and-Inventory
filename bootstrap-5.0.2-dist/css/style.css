@@ -244,3 +244,10 @@ main{
   background-color: yellow;
 }
 /*end of stock manager styles*/
+
+/* css for show expense paragraph */
+#show_income{
+    cursor: pointer;
+    font-weight: bold;
+    color: burlywood;
+}

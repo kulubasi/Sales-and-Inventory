@@ -24,6 +24,17 @@ if(isset($_SESSION['$username_j'])){
 			color:red;
 
 		}
+		#show_income, #show_expenses, #addit, #adde{
+		cursor: pointer;
+		font-weight: bold;
+		color: cyan;
+		}
+		.card-body:hover{
+			cursor: pointer;
+			background-color: pink;
+
+		}
+		
 	</style>
 </head>
 <body class="" style="font-family:cursive;font-size: large;">
@@ -225,7 +236,7 @@ if(isset($_SESSION['$username_j'])){
 						<!-- <div class="card-header text-center" >Income</div> -->
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">View Users</h5> -->
-						    <p class="card-text text-success text-center addit" id="addit"> <i class="bi bi-currency-dollar"></i> <br>Take transaction.</p>
+						    <p class="card-text text-success text-center addit" id="addit"> <i class="bi bi-currency-dollar"><br>Take transaction.</i></p>
 						  </div>
 					</div>
 				</div>
@@ -235,7 +246,7 @@ if(isset($_SESSION['$username_j'])){
 						<!-- <div class="card-header text-center">Expenditures</div> -->
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">Primary card title</h5> -->
-						    <p class="card-text text-success text-center adde" id="adde"><i class="bi bi-cash-stack"></i> <br>Record Expenses.</p>
+						    <p class="card-text text-success text-center adde" id="adde"><i class="bi bi-cash-stack"> <br>Record Expenses.</i></p>
 						  </div>
 					</div>
 				</div>
@@ -251,7 +262,7 @@ if(isset($_SESSION['$username_j'])){
 							<!-- <div class="card-header text-center" >Income Transaction</div> -->
 							  <div class="card-body">
 							    <!-- <h5 class="card-title">View Users</h5> -->
-							    <p class="card-text text-success text-center"id="show_income" onclick="clicked_income()"><i class="bi bi-currency-exchange"></i><br>Show My Expenses .</p>
+							    <p class="card-text text-success text-center"id="show_income" onclick="clicked_income()"><i class="bi bi-currency-exchange"><br>Show Expenses.</i></p>
 							  </div>
 						</div>
 					</div>
@@ -262,7 +273,7 @@ if(isset($_SESSION['$username_j'])){
 							<!-- <div class="card-header text-center">Expense Transaction</div> -->
 							  <div class="card-body">
 							    <!-- <h5 class="card-title">Primary card title</h5> -->
-							    <p class="card-text text-success text-center" id="show_expenses" onclick="clicked_expenses()"><i class="bi bi-coin"></i> <br>Show My Income Transactions.</p>
+							    <p class="card-text text-success text-center" id="show_expenses" onclick="clicked_expenses()"><i class="bi bi-coin"><br>Show Income Transactions.</i> </p>
 							  </div>
 						</div>
 					</div>
@@ -528,7 +539,7 @@ if(isset($_SESSION['$username_j'])){
 		                    echo'<td>' .$amt.'</td>';
 		                    echo'<td>' .$ct.'</td>';
 							echo'<td style="display:flex;"><button class="btn btn-primary"><a href="update.php?updateid='.$id.'">Update</a></button>
-							<button class="btn btn-danger"><a href="delete.php?deleteid='.$id.'"></a>Delete</button><br><br></td>';
+							<button class="btn btn-danger"><a href="delete.php?deleteid='.$id.'">Delete</a></button><br><br></td>';
 		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';
 		                  echo '</tr>';
 		     

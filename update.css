@@ -11,3 +11,8 @@
     transition: 1s;} */
 }
 /* .addIncome.active{transform: translate(0,0)scale(1.0);} */
+
+#cancel{
+    text-decoration: none;
+    color: aquamarine;
+}

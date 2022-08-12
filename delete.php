@@ -6,6 +6,7 @@
 						$sql="DELETE * FROM expenses WHERE id=$id";
 						$result=mysqli_query($dbconn, $sql);
 						if($result){
+							
 							echo 'Data deleted successfully';
 							// header('location:deskoff.php');
 						}

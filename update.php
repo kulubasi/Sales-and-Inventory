@@ -51,6 +51,8 @@
 					mysqli_close($dbconn);
 
 				}
+
+      
 				?>
 
         <!-- End of add expense form -->
@@ -76,11 +78,12 @@
   </div>
   
   <button type="submit" name="newexpense" class="btn btn-success">Update</button>
+  <button type="submit" name="cancelupdate" class="btn btn-danger"><a id="cancel" href="deskoff.php">Cancel</a></button>
 </form>
 
  </div>
 
-		
+	
 
 
   <script type="text/javascript" src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
