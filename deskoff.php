@@ -251,7 +251,7 @@ if(isset($_SESSION['$username_j'])){
 							<!-- <div class="card-header text-center" >Income Transaction</div> -->
 							  <div class="card-body">
 							    <!-- <h5 class="card-title">View Users</h5> -->
-							    <p class="card-text text-success text-center"id="show_income" onclick="clicked_income()"><i class="bi bi-currency-exchange"></i><br>Show Income Transactions .</p>
+							    <p class="card-text text-success text-center"id="show_income" onclick="clicked_income()"><i class="bi bi-currency-exchange"></i><br>Show My Expenses .</p>
 							  </div>
 						</div>
 					</div>
@@ -262,7 +262,7 @@ if(isset($_SESSION['$username_j'])){
 							<!-- <div class="card-header text-center">Expense Transaction</div> -->
 							  <div class="card-body">
 							    <!-- <h5 class="card-title">Primary card title</h5> -->
-							    <p class="card-text text-success text-center" id="show_expenses" onclick="clicked_expenses()"><i class="bi bi-coin"></i> <br>Show My Expenses.</p>
+							    <p class="card-text text-success text-center" id="show_expenses" onclick="clicked_expenses()"><i class="bi bi-coin"></i> <br>Show My Income Transactions.</p>
 							  </div>
 						</div>
 					</div>
