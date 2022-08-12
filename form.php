@@ -6,7 +6,7 @@
                             <span class="input-group-text"><i class="fa fa-user fa-2x"></i>
                             </span>
                         </div>
-                    </div>
+                    </div> 
 		                                 
                     <div class="input-group mb-2">
                         <input type="password" name="password" id="password" class="form-control input_pass" placeholder="Password" >

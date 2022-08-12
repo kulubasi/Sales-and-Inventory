@@ -527,8 +527,8 @@ if(isset($_SESSION['$username_j'])){
 		                    echo'<td>' .$qtty.'</td>';
 		                    echo'<td>' .$amt.'</td>';
 		                    echo'<td>' .$ct.'</td>';
-							echo'<td><button class="btn btn-primary"><a href="update.php?updateid='.$id.'">Update</a></button>
-							<button class="btn btn-danger"><a href="delete.php?deleteid='.$id.'"></a>Delete</button></td';
+							echo'<td style="display:flex;"><button class="btn btn-primary"><a href="update.php?updateid='.$id.'">Update</a></button>
+							<button class="btn btn-danger"><a href="delete.php?deleteid='.$id.'"></a>Delete</button><br><br></td>';
 		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';
 		                  echo '</tr>';
 		     
