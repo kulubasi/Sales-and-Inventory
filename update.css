@@ -1,0 +1,13 @@
+.addExpense{
+    background: white;
+    z-index: 1;
+    position: absolute;
+    top: 50px;
+    left: 400px;
+    width: 800px;
+    padding:50px;
+  
+    /* transform: translate(0,0) scale(0);
+    transition: 1s;} */
+}
+/* .addIncome.active{transform: translate(0,0)scale(1.0);} */

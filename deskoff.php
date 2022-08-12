@@ -20,6 +20,10 @@ if(isset($_SESSION['$username_j'])){
 
 	<style type="text/css">
 		a{ text-decoration: none; color: white; }
+		#card{
+			color:red;
+
+		}
 	</style>
 </head>
 <body class="" style="font-family:cursive;font-size: large;">
@@ -217,7 +221,7 @@ if(isset($_SESSION['$username_j'])){
 			<div id="gencards" class="gencards">
 			<div class="row">
 				<div class="col" >
-					<div class="card bg-light mb-3 h-100"  >
+					<div class="card bg-light mb-3 h-100" id="card" >
 						<!-- <div class="card-header text-center" >Income</div> -->
 						  <div class="card-body">
 						    <!-- <h5 class="card-title">View Users</h5> -->
@@ -457,14 +461,27 @@ if(isset($_SESSION['$username_j'])){
 		            }else{
 		            echo "<h3 >You have not made sales yet</h3>";
 		            }
-		                  
+
+					
 		            ?>
 
-
 				  </tbody>
+
+				  <?php
+					include("config.php");
+				//sql query
+						$sql = "SELECT  SUM(amount) from income";
+						$result = $dbconn->query($sql);
+				//display data on web page
+					while($row = mysqli_fetch_array($result)){
+						echo " <b>Total Amount: ". $row['SUM(amount)']."</b>";
+						echo "<br>";
+				}
+					
+					?>
 				</table>
 
-				
+			
 			</div>
 
 		<!-- end of income table -->
@@ -483,6 +500,8 @@ if(isset($_SESSION['$username_j'])){
 				      <th scope="col">Quantity</th>
 				      <th scope="col">Amount</th>
 				      <th scope="col">Date and Time</th>
+					  <th scope="col">Operations</th>
+
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -508,25 +527,43 @@ if(isset($_SESSION['$username_j'])){
 		                    echo'<td>' .$qtty.'</td>';
 		                    echo'<td>' .$amt.'</td>';
 		                    echo'<td>' .$ct.'</td>';
+							echo'<td><button class="btn btn-primary"><a href="update.php?updateid='.$id.'">Update</a></button>
+							<button class="btn btn-danger"><a href="delete.php?deleteid='.$id.'"></a>Delete</button></td';
 		                    // echo  '<td align="center" > <a title="View Feedback" href="\example\capston\project\look.php?id='.$x.'"  class="btn btn-primary btn-xs  ">  <span ><i class="fas fa-eye"></i></span></a></td>';
 		                  echo '</tr>';
 		     
 		                }
 		         
-		            }else{
+					}else {
 		            echo "<h3 >You have not yet spent any income</h3>";
 		            }
 		                  
 		            ?>
-
+				
 
 				  </tbody>
-				</table>
+
+				  <?php
+					include("config.php");
+				//sql query
+						$sql = "SELECT  SUM(amt) from expenses";
+						$result = $dbconn->query($sql);
+				//display data on web page
+					while($row = mysqli_fetch_array($result)){
+						echo " <b>Total Expenses: ". $row['SUM(amt)']."</b>";
+						echo "<br>";
+				}
+					
+					?>
+</table>
 
 				
-			</div>
-
+</div>
+			
+	
 		<!-- end of expednditure table -->
+
+		
 
 	</main>
  
@@ -612,6 +649,7 @@ if(isset($_SESSION['$username_j'])){
 			gencards.classList.remove('active')
 			
 		})
+
 	</script>
 
 	<script type="text/javascript" src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
