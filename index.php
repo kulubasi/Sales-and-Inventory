@@ -46,7 +46,7 @@
 	<!-- <div class="bod">
 		<img src="img/ictlogo.png">
 	</div> -->
-	<div class="container text-white" style="margin-top:80px" >
+	<div class="container text-white" style="margin-top:80px; height:60em;" >
 		<h4 class="text-uppercase text-center">Product Features</h4>
 		<p class="text-center">Different capabilities that make this system the best of your choice <br>and unique in its functionalities</p>
 	<div class="row text-white">
